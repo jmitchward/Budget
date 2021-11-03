@@ -1,7 +1,7 @@
 #include "dataStructs.h"
 
-Category::Category() {
-    expenseCategories << "Groceries"
+void Category::init() {
+    itemValues << "Groceries"
                       << "Gifts"
                       << "Health/Medical"
                       << "Home"
@@ -18,19 +18,8 @@ Category::Category() {
                       << "Clothes";
 }
 
+void Members::init() {
 
-bool Category::checkCategory(QString category) {
-    return expenseCategories.contains(category);
-}
-
-QList<QString> Category::getCategories() {
-    return expenseCategories.values();
-}
-
-void Category::addCategory(QString category) {
-    if (!expenseCategories.contains(category)) {
-        expenseCategories.insert(category);
-    }
 }
 
 

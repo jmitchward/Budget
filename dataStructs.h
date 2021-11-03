@@ -9,31 +9,28 @@ class budgetItem {
     Q_OBJECT
 public:
     budgetItem();
-    QList<T> getValues();
-    void addValues(T);
-    bool checkValues(T);
-private:
+    QList<T> getValues() {
+        return itemValues.values();
+    }
+    void addValues(T value) {
+        if (!itemValues.contains(value)) {
+            itemValues.insert(value);
+        }
+    }
+    bool checkValues(T value) {
+        return itemValues.contains(value);
+    }
+
     QSet<T> itemValues;
 };
 
 
-class Category : budgetItem<QString> {
-    Q_OBJECT
-
-public:
-    Category();
-    QList<QString> getCategories();
-    void addCategory(QString);
-    bool checkCategory(QString);
-
-private:
-    QSet<QString> expenseCategories;
+class Category : public budgetItem<QString> {
+    void init();
 };
 
-class Members {
-    Members();
-    QList<QString> getMembers();
-    void addMember(QString)
+class Members : public budgetItem<QString> {
+    void init();
 };
 
 
