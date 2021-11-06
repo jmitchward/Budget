@@ -1,6 +1,9 @@
 #include "mainwindow.h"
-#include "sqltablemodel.h"
+#include "./SQL/sqltablemodel.h"
 #include "ui_mainwindow.h"
+#include <QSqlQuery>
+#include <QSqlError>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -12,13 +15,20 @@ MainWindow::MainWindow(QWidget *parent)
     sideLayout = new QVBoxLayout();
     budgetView = new QTableView();
     budgetDB = QSqlDatabase::addDatabase("QSQLITE");
-    budgetDB.setDatabaseName("budget");
+    currentDir.setCurrent("/Users/mitchx/Development/Budget/Budget/Resources");
+    budgetDB.setDatabaseName("budget.db");
     budgetDB.setHostName("mitchell");
     budgetDB.setPassword("password");
     bool ok = budgetDB.open();
 
     if (ok) {std::cout << "Databse open." << std::endl;}
     else {std::cout << "Databse not open." << std::endl;}
+    QSqlQuery query;
+    if (query.exec("CREATE TABLE testTable (id int not null primary key, testB int)")) {
+        std::cout << "Query successful." << std::endl;
+    }
+    std::cout << query.lastError().text().toStdString();
+
 
     setCentralWidget(mainWidget);
     mainWidget->setLayout(mainLayout);
@@ -41,24 +51,25 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addWidget(budgetView);
     sqlTableModel *model = new sqlTableModel();
 
-    inputFile = new QFile("october_transactions.csv");
-    currentDir.setCurrent("/Users/mitchellward/Development");
+    inputFile = new QFile("july_transactions.csv");
+
     if (inputFile->open(QIODevice::ReadOnly))
     {
         std::cout << "------------------------------------" << std::endl;
         std::cout << "File open." << std::endl;
         compiledCSV = readCSV();
     }
-    std::cout << "Compiled CSV retrieved. Size: " << compiledCSV.size() << std::endl;
-    std::cout << "------------------------------------" << std::endl;
-     for (QList<QList<QString>>::iterator listEntries = compiledCSV.begin(); listEntries < compiledCSV.end(); listEntries++)
-     {
-        for (int i = 0; i < listEntries->size(); i++)
-        {
-            std::cout << "Value " << i << ": " << listEntries->at(i).toStdString() << std::endl;
-        }
-     }
-     std::cout << "------------------------------------" << std::endl;
+//    std::cout << "Compiled CSV retrieved. Size: " << compiledCSV.size() << std::endl;
+//    std::cout << "------------------------------------" << std::endl;
+//     for (QList<QList<QString>>::iterator listEntries = compiledCSV.begin(); listEntries < compiledCSV.end(); listEntries++)
+//     {
+//        for (int i = 0; i < listEntries->size(); i++)
+//        {
+//            std::cout << "Value " << i << ": " << listEntries->at(i).toStdString() << std::endl;
+
+//        }
+//     }
+//     std::cout << "------------------------------------" << std::endl;
 
 
     budgetView->setModel(model);
@@ -71,10 +82,21 @@ QStringList MainWindow::readLine()
     QStringList values;
     if (!inputFile->atEnd())
     {
+        QSqlQuery query;
+        query.prepare("INSERT INTO transactions(date, amount, description, shared, member) "
+                      " VALUES (:date, :amount, :description, :shared, :member)");
         QByteArray line = inputFile->readLine();
         // Get the line, retrieved in ByteArray form
         QList<QByteArray> valuesInBytes = line.split(',');
         // Split the line by commas, since its a CSV
+        query.bindValue(":date", valuesInBytes.at(0));
+        query.bindValue(":amount", valuesInBytes.at(1));
+        query.bindValue(":description", valuesInBytes.at(2));
+        query.bindValue(":shared", valuesInBytes.at(3));
+        query.bindValue(":member", valuesInBytes.at(4));
+        if (query.exec()) {
+            std::cout << "Query successful." << std::endl;
+        }
         QList<QByteArray>::const_iterator fileIterator;
         for (fileIterator = valuesInBytes.begin(); fileIterator < valuesInBytes.end(); fileIterator++)
         {

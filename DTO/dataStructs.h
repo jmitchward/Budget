@@ -5,10 +5,8 @@
 #include <QSet>
 
 template <class T>
-class budgetItem {
-    Q_OBJECT
+class budgetItem : public QObject {
 public:
-    budgetItem();
     QList<T> getValues() {
         return itemValues.values();
     }
@@ -20,16 +18,17 @@ public:
     bool checkValues(T value) {
         return itemValues.contains(value);
     }
-
     QSet<T> itemValues;
 };
 
 
 class Category : public budgetItem<QString> {
+    Q_OBJECT
     void init();
 };
 
 class Members : public budgetItem<QString> {
+    Q_OBJECT
     void init();
 };
 

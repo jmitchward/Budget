@@ -4,7 +4,7 @@
 #include <QObject>
 #include "dataStructs.h"
 
-class Transaction
+class Transaction : public QObject
 {
     Q_OBJECT
 public:
