@@ -41,8 +41,6 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
-    QStringList readLine();
-    QList<QList<QString>> readCSV();
     ~MainWindow();
 
 private:
@@ -52,9 +50,9 @@ private:
     QVBoxLayout *sideLayout;
     QTableView *budgetView;
     QSqlDatabase budgetDB;
-    QDir currentDir;
-    QFile *inputFile;
     QList<QList<QString>> compiledCSV;
+    QFile *inputFile;
+    QDir currentDir;
 
 
 };

@@ -1,6 +1,7 @@
 #include "sqltablemodel.h"
 
-sqlTableModel::sqlTableModel()
+sqlTableModel::sqlTableModel(QSqlDatabase database) :
+    QSqlTableModel(nullptr, database)
 {
     this->setTable("transactions");
     this->setHeaderData(1, Qt::Horizontal, tr("Date"));
@@ -9,4 +10,5 @@ sqlTableModel::sqlTableModel()
     this->setHeaderData(4, Qt::Horizontal, tr("Category"));
     this->setHeaderData(5, Qt::Horizontal, tr("Shared"));
     this->setHeaderData(6, Qt::Horizontal, tr("Member"));
+    this->select();
 }

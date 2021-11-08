@@ -8,7 +8,7 @@ class sqlTableModel : public QSqlTableModel
 {
     Q_OBJECT
 public:
-    sqlTableModel();
+    sqlTableModel(QSqlDatabase);
 };
 
 #endif // SQLTABLEMODEL_H
