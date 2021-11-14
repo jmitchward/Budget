@@ -51,17 +51,17 @@ QStringList readFile::readLine()
         QList<QByteArray>::const_iterator fileIterator;
         for (fileIterator = valuesInBytes.cbegin(); fileIterator < valuesInBytes.cend(); fileIterator++)
         {
-            if (*fileIterator == " " || fileIterator->toStdString().empty() || fileIterator->isEmpty())
-            {
-                continue;
-            }
-            else
-            {
+//            if (fileIterator->toStdString().empty() || fileIterator->isEmpty())
+//            {
+//                continue;
+//            }
+//            else
+//            {
 //                std::cout << "Value: " << fileIterator->toStdString() << std::endl;
-                values.append(*fileIterator);
+            values.append(*fileIterator);
 //                std::cout << "Values size: " << values.size() << std::endl;
                  // For each value in the line, append them to a QList
-            }
+//            }
 
         }
     }

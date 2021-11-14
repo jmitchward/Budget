@@ -1,87 +1,87 @@
-Date,Amount,Description,Category,Shared,Purchased
-7/1/2021,"$1,750.00 ",Rent,Rent,Yes,Abbey
-7/8/2021,$19.06 ,Stop & Shop,Groceries,Yes,Mitch
-7/9/2021,$24.80 ,Gas- Car,Transportation/Gas,No,Mitch
-7/10/2021,$67.98 ,Zara,Clothes,No,Mitch
-7/10/2021,$19.09 ,Job Lot,Home,Yes,Mitch
-7/10/2021,$56.40 ,Target,Home,Yes,Mitch
-7/10/2021,$83.18 ,Town Wine & Spirits,Groceries,Yes,Mitch
-7/11/2021,$19.63 ,Dave's Coffee,Dining Out,Yes,Mitch
-7/11/2021,$18.40 ,Bun's Bakery,Dining Out,Yes,Mitch
-7/11/2021,$100.68 ,Costco,Groceries,Yes,Mitch
-7/15/2021,$73.26 ,Amazon,Home,No,Mitch
-7/17/2021,$38.50 ,Buttonwood's Brewery,Dining Out,Yes,Mitch
-7/17/2021,$14.33 ,Providence Bagel,Dining Out,Yes,Mitch
-7/20/2021,$11.67 ,Market Basket,Groceries,Yes,Mitch
-7/9/2021,$39.99 ,Internet,Utilities,Yes,Mitch
-7/18/2021,$23.50 ,Parking Ticket,Transportation/Gas,No,Mitch
-7/21/2021,$88.50 ,Traffic Violation,Transportation/Gas,No,Mitch
-7/25/2021,$481.30 ,Hotel - New York,Travel,Yes,Mitch
-7/25/2021,$188.00 ,Amtrack - New York,Travel,Yes,Abbey
-7/28/2021,$25.73 ,Gas- Car,Transportation/Gas,No,Mitch
-7/27/2021,$100.00 ,Overnight Parking Permit,Home,No,Mitch
-7/27/2021,$36.38 ,Nikki's Liquors,Groceries,Yes,Mitch
-7/23/2021,$29.98 ,TJ Maxx - Shirts (M),Personal,No,Mitch
-7/18/2021,$34.99 ,DSW Slip Ons (M),Personal,No,Mitch
-7/1/2021,$23.69 ,Gas- Car,Transportation/Gas,No,Mitch
-7/1/2021,$45.14 ,Wise Guys,Dining Out,Yes,Mitch
-7/2/2021,$18.77 ,Dave's ,Groceries,Yes,Mitch
-7/3/2021,$27.10 ,Fast 9,Personal,Yes,Mitch
-7/4/2021,$15.00 ,Tricycle Ice Cream,Dining Out,Yes,Mitch
-7/4/2021,$106.63 ,Trader Joe's,Groceries,Yes,Mitch
-7/4/2021,$18.62 ,Ward's Berry Farm,Groceries,Yes,Mitch
-7/5/2021,$246.00 ,Air Conditioner,Home,Yes,Mitch
-7/23/2021,$44.80 ,Gas- Subaru,Transportation/Gas,No,Mitch
-,$46.24 ,Aldi,Groceries,Yes,Abbey
-,$41.87 ,Dave's,Groceries,Yes,Abbey
-,$11.36 ,Dave's,Groceries,Yes,Abbey
-,$44.66 ,Misfit Market,Groceries,Yes,Abbey
-,$74.25 ,Trader Joe's,Groceries,Yes,Abbey
-,$96.30 ,Market Basket,Groceries,Yes,Abbey
-,$23.00 ,Target,Groceries,Yes,Abbey
-,$20.00 ,Zara,Clothes,No,Abbey
-,$59.00 ,H&M,Clothes,No,Abbey
-,$84.12 ,Banana Republic,Clothes,No,Abbey
-,$88.20 ,Asos,Clothes,No,Abbey
-,$14.99 ,TJ Maxx - Underwear (A),Clothes,No,Abbey
-,$23.00 ,Target,Clothes,Yes,Abbey
-,$256.16 ,Mattress Topper,Home,Yes,Abbey
-,$79.00 ,Ikea,Home,Yes,Abbey
-,$18.72 ,Big Lots,Home,Yes,Abbey
-,$21.00 ,Target,Home,Yes,Abbey
-,$75.00 ,Amazon,Home,Yes,Abbey
-,$51.00 ,Y Noodle Bar,Dining Out,Yes,Abbey
-,$40.59 ,Bucktown,Dining Out,Yes,Abbey
-,$73.00 ,Plant City,Dining Out,No,Abbey
-,$12.80 ,Soda Pop,Dining Out,Yes,Abbey
-,$27.86 ,Chipotle,Dining Out,No,Abbey
-,$223.34 ,Warwick Hotel,Travel,Yes,Abbey
-,$10.14 ,Lyft,Transportation/Gas,No,Abbey
-,$10.52 ,Lyft,Transportation/Gas,No,Abbey
-,$10.09 ,Lyft,Transportation/Gas,No,Abbey
-,$10.41 ,Lyft,Transportation/Gas,No,Abbey
-,$25.00 ,Abby's BDay Present,Gifts,Yes,Abbey
-,$9.00 ,Target,Gifts,No,Abbey
-,$168.94 ,Work Fridge,Work Related,No,Abbey
-,$123.00 ,Amazon,Work Related,No,Abbey
-,$10.59 ,Newspaper,Work Related,No,Abbey
-,$15.00 ,Target,Work Related,No,Abbey
-,$35.35 ,Mail Delivery (A),Health/medical,No,Abbey
-,$22.00 ,Target ,Health/medical,Yes,Abbey
-,$19.00 ,Amazon,Health/medical,No,Abbey
-,$8.81 ,Hobby Lobby,Crafts,No,Abbey
-,$24.34 ,Joann's Fabrics,Clothes,No,Abbey
-,$11.72 ,Etsy,Crafts,No,Abbey
-,$13.00 ,Amazon,Crafts,No,Abbey
-,$19.23 ,Crystals,Other,No,Abbey
-,$9.63 ,Dollar Tree,Other,Yes,Abbey
-,$6.50 ,Target,Personal,No,Abbey
-,$23.00 ,Amazon,Personal,No,Abbey
-7/29/2021,$29.84 ,Amazon,Home,Yes,Mitch
-7/14/2021,$44.98 ,Walgreens,Health/medical,No,Mitch
-7/24/2021,$4.99 ,Peacock,Subscriptions,No,Mitch
-7/18/2021,$10.36 ,Auntie Anne's,Dining Out,Yes,Mitch
-7/18/2021,$28.90 ,Nintendo,Subscriptions,No,Mitch
-7/26/2021,$12.71 ,Hulu,Subscriptions,No,Mitch
-7/30/2021,$67.92 ,Electric,Utilities,No,Mitch
-7/30/2021,$31.53 ,Gas,Utilities,No,Mitch
+"Date","Amount","Description","Category","Shared","Purchased"
+"7/1/2021","$1750.00 ","Rent","Rent","Yes","Abbey"
+"7/8/2021","$19.06 ","Stop & Shop","Groceries","Yes","Mitch"
+"7/9/2021","$24.80 ","Gas- Car","Transportation/Gas","No","Mitch"
+"7/10/2021","$67.98 ","Zara","Clothes","No","Mitch"
+"7/10/2021","$19.09 ","Job Lot","Home","Yes","Mitch"
+"7/10/2021","$56.40 ","Target","Home","Yes","Mitch"
+"7/10/2021","$83.18 ","Town Wine & Spirits","Groceries","Yes","Mitch"
+"7/11/2021","$19.63 ","Dave's Coffee","Dining Out","Yes","Mitch"
+"7/11/2021","$18.40 ","Bun's Bakery","Dining Out","Yes","Mitch"
+"7/11/2021","$100.68 ","Costco","Groceries","Yes","Mitch"
+"7/15/2021","$73.26 ","Amazon","Home","No","Mitch"
+"7/17/2021","$38.50 ","Buttonwood's Brewery","Dining Out","Yes","Mitch"
+"7/17/2021","$14.33 ","Providence Bagel","Dining Out","Yes","Mitch"
+"7/20/2021","$11.67 ","Market Basket","Groceries","Yes","Mitch"
+"7/9/2021","$39.99 ","Internet","Utilities","Yes","Mitch"
+"7/18/2021","$23.50 ","Parking Ticket","Transportation/Gas","No","Mitch"
+"7/21/2021","$88.50 ","Traffic Violation","Transportation/Gas","No","Mitch"
+"7/25/2021","$481.30 ","Hotel - New York","Travel","Yes","Mitch"
+"7/25/2021","$188.00 ","Amtrack - New York","Travel","Yes","Abbey"
+"7/28/2021","$25.73 ","Gas- Car","Transportation/Gas","No","Mitch"
+"7/27/2021","$100.00 ","Overnight Parking Permit","Home","No","Mitch"
+"7/27/2021","$36.38 ","Nikki's Liquors","Groceries","Yes","Mitch"
+"7/23/2021","$29.98 ","TJ Maxx - Shirts (M)","Personal","No","Mitch"
+"7/18/2021","$34.99 ","DSW Slip Ons (M)","Personal","No","Mitch"
+"7/1/2021","$23.69 ","Gas- Car","Transportation/Gas","No","Mitch"
+"7/1/2021","$45.14 ","Wise Guys","Dining Out","Yes","Mitch"
+"7/2/2021","$18.77 ","Dave's ","Groceries","Yes","Mitch"
+"7/3/2021","$27.10 ","Fast 9","Personal","Yes","Mitch"
+"7/4/2021","$15.00 ","Tricycle Ice Cream","Dining Out","Yes","Mitch"
+"7/4/2021","$106.63 ","Trader Joe's","Groceries","Yes","Mitch"
+"7/4/2021","$18.62 ","Ward's Berry Farm","Groceries","Yes","Mitch"
+"7/5/2021","$246.00 ","Air Conditioner","Home","Yes","Mitch"
+"7/23/2021","$44.80 ","Gas- Subaru","Transportation/Gas","No","Mitch"
+"","$46.24 ","Aldi","Groceries","Yes","Abbey"
+"","$41.87 ","Dave's","Groceries","Yes","Abbey"
+"","$11.36 ","Dave's","Groceries","Yes","Abbey"
+"","$44.66 ","Misfit Market","Groceries","Yes","Abbey"
+"","$74.25 ","Trader Joe's","Groceries","Yes","Abbey"
+"","$96.30 ","Market Basket","Groceries","Yes","Abbey"
+"","$23.00 ","Target","Groceries","Yes","Abbey"
+"","$20.00 ","Zara","Clothes","No","Abbey"
+"","$59.00 ","H&M","Clothes","No","Abbey"
+"","$84.12 ","Banana Republic","Clothes","No","Abbey"
+"","$88.20 ","Asos","Clothes","No","Abbey"
+"","$14.99 ","TJ Maxx - Underwear (A)","Clothes","No","Abbey"
+"","$23.00 ","Target","Clothes","Yes","Abbey"
+"","$256.16 ","Mattress Topper","Home","Yes","Abbey"
+"","$79.00 ","Ikea","Home","Yes","Abbey"
+"","$18.72 ","Big Lots","Home","Yes","Abbey"
+"","$21.00 ","Target","Home","Yes","Abbey"
+"","$75.00 ","Amazon","Home","Yes","Abbey"
+"","$51.00 ","Y Noodle Bar","Dining Out","Yes","Abbey"
+"","$40.59 ","Bucktown","Dining Out","Yes","Abbey"
+"","$73.00 ","Plant City","Dining Out","No","Abbey"
+"","$12.80 ","Soda Pop","Dining Out","Yes","Abbey"
+"","$27.86 ","Chipotle","Dining Out","No","Abbey"
+"","$223.34 ","Warwick Hotel","Travel","Yes","Abbey"
+"","$10.14 ","Lyft","Transportation/Gas","No","Abbey"
+"","$10.52 ","Lyft","Transportation/Gas","No","Abbey"
+"","$10.09 ","Lyft","Transportation/Gas","No","Abbey"
+"","$10.41 ","Lyft","Transportation/Gas","No","Abbey"
+"","$25.00 ","Abby's BDay Present","Gifts","Yes","Abbey"
+"","$9.00 ","Target","Gifts","No","Abbey"
+"","$168.94 ","Work Fridge","Work Related","No","Abbey"
+"","$123.00 ","Amazon","Work Related","No","Abbey"
+"","$10.59 ","Newspaper","Work Related","No","Abbey"
+"","$15.00 ","Target","Work Related","No","Abbey"
+"","$35.35 ","Mail Delivery (A)","Health/medical","No","Abbey"
+"","$22.00 ","Target ","Health/medical","Yes","Abbey"
+"","$19.00 ","Amazon","Health/medical","No","Abbey"
+"","$8.81 ","Hobby Lobby","Crafts","No","Abbey"
+"","$24.34 ","Joann's Fabrics","Clothes","No","Abbey"
+"","$11.72 ","Etsy","Crafts","No","Abbey"
+"","$13.00 ","Amazon","Crafts","No","Abbey"
+"","$19.23 ","Crystals","Other","No","Abbey"
+"","$9.63 ","Dollar Tree","Other","Yes","Abbey"
+"","$6.50 ","Target","Personal","No","Abbey"
+"","$23.00 ","Amazon","Personal","No","Abbey"
+"7/29/2021","$29.84 ","Amazon","Home","Yes","Mitch"
+"7/14/2021","$44.98 ","Walgreens","Health/medical","No","Mitch"
+"7/24/2021","$4.99 ","Peacock","Subscriptions","No","Mitch"
+"7/18/2021","$10.36 ","Auntie Anne's","Dining Out","Yes","Mitch"
+"7/18/2021","$28.90 ","Nintendo","Subscriptions","No","Mitch"
+"7/26/2021","$12.71 ","Hulu","Subscriptions","No","Mitch"
+"7/30/2021","$67.92 ","Electric","Utilities","No","Mitch"
+"7/30/2021","$31.53 ","Gas","Utilities","No","Mitch"

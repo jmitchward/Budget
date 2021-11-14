@@ -17,7 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     sideLayout = new QVBoxLayout();
     budgetView = new QTableView();
     budgetDB = QSqlDatabase::addDatabase("QSQLITE");
-    currentDir.setCurrent("C:/Development/Budget/Budget/Resources");
     budgetDB.setDatabaseName("budget.db");
     budgetDB.setHostName("mitchell");
     budgetDB.setPassword("password");
@@ -26,14 +25,19 @@ MainWindow::MainWindow(QWidget *parent)
     else {std::cout << "Databse not open." << std::endl;}
 
     QSqlQuery query;
-    query.exec("create table transactions "
+    if(query.exec("create table transactions("
             "primary_key INTEGER PRIMARY KEY,"
-            "date TEXT NOT NULL, "
+            "date TEXT, "
             "amount INTEGER NOT NULL, "
             "store TEXT, "
             "description TEXT, "
+            "category TEXT NOT NULL, "
             "shared INTEGER NOT NULL, "
-            "member TEXT NOT NULL");
+                  "member TEXT NOT NULL)")) {
+        std::cout << "Query successful." << std::endl;
+    }
+    else { std::cout << query.lastError().text().toStdString() << std::endl;}
+
     setCentralWidget(mainWidget);
     mainWidget->setLayout(mainLayout);
 
@@ -54,8 +58,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     mainLayout->addWidget(budgetView);
     sqlTableModel *model = new sqlTableModel(budgetDB);
-
-    inputFile = new QFile("july_transactions.csv");
+    inputFile = new QFile(":/Resources/july_transactions.csv");
 
     if (inputFile->open(QIODevice::ReadOnly))
     {

@@ -33,6 +33,10 @@ SOURCES += \
     SQL/writetable.cpp \
     View/mainwindow.cpp
 
+RESOURCES += \
+    Resources/july_transactions.csv \
+    Resources/budget.db
+
 
 FORMS += \
     View/mainwindow.ui
