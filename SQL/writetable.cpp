@@ -10,7 +10,6 @@ writeTable::writeTable(QList<QList<QString>> newData) :
 
 void writeTable::writeData()
 {
-    std::cout << "Reached writeData." << std::endl;
     for (QList<QList<QString>>::const_iterator dataIterator = data.cbegin(); dataIterator < data.cend(); dataIterator++)
     {
 //            std::cout << "Query captured: " << dataIterator->size() << std::endl;
@@ -29,25 +28,27 @@ void writeTable::writeData()
 //            (dataIterator->at(4)=="") ? (std::cout << "4 Blank" << std::endl) : (std::cout << "Not Blank" << std::endl);
 //            (dataIterator->at(5)=="") ? (std::cout << "5 Blank" << std::endl) : (std::cout << "Not Blank" << std::endl);
 
-
+            if(dataIterator->at(0).toLower().contains("date")) { std::cout << "Index line skipped." << std::endl;
+                                                                continue; }
             QSqlQuery query;
             query.prepare(QString("INSERT INTO transactions(date, amount, store, description, category, shared, member) "
                           " VALUES (:date, :amount, :description, :store, :category, :shared, :member)"));
             query.bindValue(":date", dataIterator->at(0));
+
             query.bindValue(":amount", dataIterator->at(1));
             query.bindValue(":store" , "Null");
             query.bindValue(":description", dataIterator->at(2));
             query.bindValue(":category", dataIterator->at(3));
             query.bindValue(":shared", dataIterator->at(4));
             query.bindValue(":member", dataIterator->at(5));
-            QVariantList boundV = query.boundValues();
-            for (int i = 0; i < boundV.size(); i++) {
-                std::cout << "i : " << i << " " << boundV.at(i).toString().toStdString() << std::endl;
-            }
+            // QVariantList boundV = query.boundValues();
+//            for (int i = 0; i < boundV.size(); i++) {
+//                std::cout << "i : " << i << " " << boundV.at(i).toString().toStdString() << std::endl;
+//            }
 
-            if (query.exec()) {
-                std::cout << "Query successful." << std::endl;
+            if (!query.exec()) {
+                std::cout << "Query not successful." << std::endl;
+                std::cout << query.lastError().text().toStdString() << std::endl;
             }
-            else {std::cout << query.lastError().text().toStdString() << std::endl;}
     }
 }

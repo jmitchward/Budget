@@ -35,6 +35,10 @@ SOURCES += \
 
 RESOURCES += \
     Resources/july_transactions.csv \
+    Resources/august_transactions.csv \
+    Resources/september_transactions.csv \
+    Resources/october_transactions.csv \
+    Resources/november_transactions.csv \
     Resources/budget.db
 
 

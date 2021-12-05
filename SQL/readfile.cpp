@@ -28,6 +28,8 @@ QList<QList<QString>> readFile::readCSV()
 //            int columnNumber = lineIterator - line.begin();
 //            std::cout << "Column number: " << columnNumber << std::endl;
 //            std::cout << "Column value: " << lineIterator->toStdString() << std::endl;
+            lineIterator->replace("\"", "");
+            lineIterator->replace("$", "");
             lineItem.append(*lineIterator);
 //            std::cout << "Line Item size: " << lineItem.size() << std::endl;
         }

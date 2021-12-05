@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout = new QHBoxLayout();
     sideLayout = new QVBoxLayout();
     budgetView = new QTableView();
+//    std::cout << "Path: " << qApp->applicationDirPath().toStdString() << std::endl;
     budgetDB = QSqlDatabase::addDatabase("QSQLITE");
     budgetDB.setDatabaseName("budget.db");
     budgetDB.setHostName("mitchell");
@@ -25,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     else {std::cout << "Databse not open." << std::endl;}
 
     QSqlQuery query;
-    if(query.exec("create table transactions("
+    if(query.exec("create table if not exists transactions("
             "primary_key INTEGER PRIMARY KEY,"
             "date TEXT, "
             "amount INTEGER NOT NULL, "
@@ -38,6 +39,8 @@ MainWindow::MainWindow(QWidget *parent)
     }
     else { std::cout << query.lastError().text().toStdString() << std::endl;}
 
+    if (query.exec("PRAGMA journal_mode=WAL")) { std::cout << "WAL mode successful." << std::endl; }
+
     setCentralWidget(mainWidget);
     mainWidget->setLayout(mainLayout);
 
@@ -45,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     QPushButton *addExpenseButton = new QPushButton();
     QPushButton *viewExpensesButton = new QPushButton();
     QPushButton *viewChartButton = new QPushButton();
+    QPushButton *viewStatsButton = new QPushButton();
 
     mainLayout->addLayout(sideLayout);
     sideLayout->addWidget(addIncomeButton);
@@ -53,6 +57,8 @@ MainWindow::MainWindow(QWidget *parent)
     addExpenseButton->setText(tr("Add Expense"));
     sideLayout->addWidget(viewExpensesButton);
     viewExpensesButton->setText(tr("View Expenses"));
+    sideLayout->addWidget(viewStatsButton);
+    viewStatsButton->setText(tr("View Stats"));
     sideLayout->addWidget(viewChartButton);
     viewChartButton->setText(tr("View Charts"));
 
@@ -62,27 +68,55 @@ MainWindow::MainWindow(QWidget *parent)
 
     if (inputFile->open(QIODevice::ReadOnly))
     {
-        std::cout << "Calling readFile." << std::endl;
         readFile database(inputFile);
-        std::cout << "Calling writeTable." << std::endl;
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-//    std::cout << "Compiled CSV retrieved. Size: " << compiledCSV.size() << std::endl;
-//    std::cout << "------------------------------------" << std::endl;
-//     for (QList<QList<QString>>::iterator listEntries = compiledCSV.begin(); listEntries < compiledCSV.end(); listEntries++)
-//     {
-//        for (int i = 0; i < listEntries->size(); i++)
-//        {
-//            std::cout << "Value " << i << ": " << listEntries->at(i).toStdString() << std::endl;
 
-//        }
-//     }
-//     std::cout << "------------------------------------" << std::endl;
+    inputFile->close();
+    inputFile = new QFile(":/Resources/august_transactions.csv");
 
+    if (inputFile->open(QIODevice::ReadOnly))
+    {
+        readFile database(inputFile);
+        writeTable table(database.readCSV());
+    }
+    else { std::cout << "File not open." << std::endl; }
 
+    inputFile->close();
+    inputFile = new QFile(":/Resources/september_transactions.csv");
+
+    if (inputFile->open(QIODevice::ReadOnly))
+    {
+        readFile database(inputFile);
+        writeTable table(database.readCSV());
+    }
+    else { std::cout << "File not open." << std::endl; }
+
+    inputFile->close();
+    inputFile = new QFile(":/Resources/october_transactions.csv");
+
+    if (inputFile->open(QIODevice::ReadOnly))
+    {
+        readFile database(inputFile);
+        writeTable table(database.readCSV());
+    }
+    else { std::cout << "File not open." << std::endl; }
+
+    inputFile->close();
+    inputFile = new QFile(":/Resources/november_transactions.csv");
+
+    if (inputFile->open(QIODevice::ReadOnly))
+    {
+        readFile database(inputFile);
+        writeTable table(database.readCSV());
+    }
+    else { std::cout << "File not open." << std::endl; }
+
+    inputFile->close();
 
     budgetView->setModel(model);
+    budgetView->setColumnHidden(0, true);
     model->select();
     std::cout << "Model set." << std::endl;
     budgetView->show();
