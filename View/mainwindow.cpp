@@ -3,6 +3,7 @@
 #include "SQL/sqltablemodel.h"
 #include "SQL/readfile.h"
 #include "SQL/writetable.h"
+#include "SQL/readtable.h"
 #include <QSqlQuery>
 #include <QSqlError>
 
@@ -12,11 +13,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("Budget"));
-    mainWidget = new QWidget();
+    // Widgets
+    mainWidget = new QStackedWidget(this);
+    viewStats statsTab(this);
+    // Layouts
     mainLayout = new QHBoxLayout();
     sideLayout = new QVBoxLayout();
+    // SQL
     budgetView = new QTableView();
-//    std::cout << "Path: " << qApp->applicationDirPath().toStdString() << std::endl;
     budgetDB = QSqlDatabase::addDatabase("QSQLITE");
     budgetDB.setDatabaseName("budget.db");
     budgetDB.setHostName("mitchell");
@@ -24,7 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     bool ok = budgetDB.open();
     if (ok) {std::cout << "Databse open." << std::endl;}
     else {std::cout << "Databse not open." << std::endl;}
-
+    // Table Reader
+    readTable dataRetriever;
+    statsTab.setDatabase(budgetDB);
     QSqlQuery query;
     if(query.exec("create table if not exists transactions("
             "primary_key INTEGER PRIMARY KEY,"
@@ -34,10 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
             "description TEXT, "
             "category TEXT NOT NULL, "
             "shared INTEGER NOT NULL, "
-                  "member TEXT NOT NULL)")) {
-        std::cout << "Query successful." << std::endl;
-    }
-    else { std::cout << query.lastError().text().toStdString() << std::endl;}
+            "member TEXT NOT NULL)"))
+        { std::cout << "Query successful." << std::endl; }
+    else
+        { std::cout << query.lastError().text().toStdString() << std::endl; }
 
     if (query.exec("PRAGMA journal_mode=WAL")) { std::cout << "WAL mode successful." << std::endl; }
 
@@ -59,70 +65,62 @@ MainWindow::MainWindow(QWidget *parent)
     viewExpensesButton->setText(tr("View Expenses"));
     sideLayout->addWidget(viewStatsButton);
     viewStatsButton->setText(tr("View Stats"));
+    connect(viewStatsButton, SIGNAL(clicked), &statsTab, SLOT(displayTab));
+    connect(viewStatsButton, &QPushButton::clicked, [=]{std::cout << "Clicked." << std::endl;});
     sideLayout->addWidget(viewChartButton);
     viewChartButton->setText(tr("View Charts"));
 
     mainLayout->addWidget(budgetView);
+    mainLayout->addWidget(&statsTab);
     sqlTableModel *model = new sqlTableModel(budgetDB);
+/*
     inputFile = new QFile(":/Resources/july_transactions.csv");
-
     if (inputFile->open(QIODevice::ReadOnly))
     {
         readFile database(inputFile);
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-
     inputFile->close();
     inputFile = new QFile(":/Resources/august_transactions.csv");
-
     if (inputFile->open(QIODevice::ReadOnly))
     {
         readFile database(inputFile);
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-
     inputFile->close();
     inputFile = new QFile(":/Resources/september_transactions.csv");
-
     if (inputFile->open(QIODevice::ReadOnly))
     {
         readFile database(inputFile);
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-
     inputFile->close();
     inputFile = new QFile(":/Resources/october_transactions.csv");
-
     if (inputFile->open(QIODevice::ReadOnly))
     {
         readFile database(inputFile);
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-
     inputFile->close();
     inputFile = new QFile(":/Resources/november_transactions.csv");
-
     if (inputFile->open(QIODevice::ReadOnly))
     {
         readFile database(inputFile);
         writeTable table(database.readCSV());
     }
     else { std::cout << "File not open." << std::endl; }
-
     inputFile->close();
+*/
 
     budgetView->setModel(model);
     budgetView->setColumnHidden(0, true);
-    model->select();
-    std::cout << "Model set." << std::endl;
+    model->select();    
     budgetView->show();
-    std::cout << "Model shown." << std::endl;
-
-    }
+}
 
 MainWindow::~MainWindow()
 {

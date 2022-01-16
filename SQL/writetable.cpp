@@ -34,7 +34,6 @@ void writeTable::writeData()
             query.prepare(QString("INSERT INTO transactions(date, amount, store, description, category, shared, member) "
                           " VALUES (:date, :amount, :description, :store, :category, :shared, :member)"));
             query.bindValue(":date", dataIterator->at(0));
-
             query.bindValue(":amount", dataIterator->at(1));
             query.bindValue(":store" , "Null");
             query.bindValue(":description", dataIterator->at(2));

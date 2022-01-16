@@ -15,23 +15,31 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     DTO/dataStructs.h \
+    DTO/member.h \
     DTO/transaction.h \
+    Model/datacontroller.h \
     SQL/readfile.h \
+    SQL/readtable.h \
     SQL/sqltablemodel.h \
     SQL/writefile.h \
     SQL/writetable.h \
-    View/mainwindow.h
+    View/mainwindow.h \
+    View/viewstats.h
 
 
 SOURCES += \
     App/main.cpp \
     DTO/dataStructs.cpp \
+    DTO/member.cpp \
     DTO/transaction.cpp \
+    Model/datacontroller.cpp \
     SQL/readfile.cpp \
+    SQL/readtable.cpp \
     SQL/sqltablemodel.cpp \
     SQL/writefile.cpp \
     SQL/writetable.cpp \
-    View/mainwindow.cpp
+    View/mainwindow.cpp \
+    View/viewstats.cpp
 
 RESOURCES += \
     Resources/july_transactions.csv \

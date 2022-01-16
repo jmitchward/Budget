@@ -6,6 +6,7 @@
 #include <QHBoxLayout>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QAbstractButton>
 #include <QSqlTableModel>
 #include <QTableView>
 #include <QSqlDatabase>
@@ -13,6 +14,7 @@
 #include <QStandardItemModel>
 #include <QFile>
 #include <QDir>
+#include "View/viewstats.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -45,15 +47,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QWidget *mainWidget;
+    QStackedWidget *mainWidget;
     QHBoxLayout *mainLayout;
     QVBoxLayout *sideLayout;
     QTableView *budgetView;
     QSqlDatabase budgetDB;
     QList<QList<QString>> compiledCSV;
     QFile *inputFile;
-    QDir currentDir;
-
-
+    QDir currentDir;   
 };
 #endif // MAINWINDOW_H
