@@ -5,13 +5,13 @@ readTable::readTable()
 
 }
 
-QList<Transaction> readTable::getAllData(QSqlDatabase database) {
+QList<Transaction> readTable::getAllData() {
     QSqlQuery query;
     QList<Transaction> readTransactions;
 
-    if (!database.open()) {
-        std::cout << "Error. Database not open." << std::endl;
-    }
+//    if (!database.open()) {
+//        std::cout << "Error. Database not open." << std::endl;
+//    }
 
     QString selectQuery("SELECT * FROM transactions ");
 
@@ -22,24 +22,45 @@ QList<Transaction> readTable::getAllData(QSqlDatabase database) {
                      << query.lastError().text().toStdString() << std::endl;}
 
     while (query.next()) {
+        std::cout << "Next query." << std::endl;
         // Create a transaction based on the current line
-        Transaction transaction(// Date
-                                query.value(1).toString(),
-                                // Amount
-                                query.value(2).toDouble(),
-                                // Description
-                                query.value(3).toString(),
-                                // Store
-                                query.value(4).toString(),
-                                // Category
-                                Category(query.value(5).toString()),
-                                // Shared
-                                query.value(6).toBool(),
-                                // Member
-                                Member(query.value(7).toString())
-                                );
+//        std::cout <<
+//
+//
+//
+//
+//
+//
+//                  << std::endl;
+
+        Transaction *transaction = new Transaction();
+        // Date
+        transaction->setDate(query.value(1).toString());
+        std::cout << "Date set. "  << query.value(1).toString().toStdString() << std::endl;
+        // Amount
+        transaction->setAmt(query.value(2).toDouble());
+        std::cout << "Amount set. " << query.value(2).toDouble() << std::endl;
+        // Description
+        transaction->setDesc(query.value(3).toString());
+        std::cout << "Desc set. "   << query.value(3).toString().toStdString() << std::endl;
+        // Store
+        transaction->setStore(query.value(4).toString());
+        std::cout << "Store set. "  << query.value(4).toString().toStdString() << std::endl;
+        // Category
+        Category newCat(query.value(5).toString());
+        transaction->setCtg(newCat);;
+        std::cout << "Cat set. "    << query.value(5).toString().toStdString() << std::endl;
+        // Shared
+        transaction->setShr(query.value(6).toBool());
+        std::cout << "Shared set. " << query.value(6).toBool() << std::endl;
+        // Member
+        transaction->setMbr(Member(query.value(7).toString()));
+        std::cout << "Member set. "    << query.value(7).toString().toStdString() << std::endl;
+
+        std::cout << "Attempting to add transaction." << std::endl;
         // Add it ito the returning list of transactions
-        readTransactions.append(transaction);
+        readTransactions.append(*transaction);
+        std::cout << "Transaction appended." << std::endl;
     }
     return readTransactions;
 }

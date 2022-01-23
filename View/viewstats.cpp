@@ -5,9 +5,18 @@ viewStats::viewStats(QWidget* parent)
     layout = new QBoxLayout(QBoxLayout::TopToBottom, parent);
     this->setLayout(layout);
     aButton = new QPushButton(this);
+    initConnections();
+
 }
+
+void viewStats::initConnections() {
+    connect(aButton, &QPushButton::clicked, [this] { collectData(); });
+}
+
 void viewStats::collectData() {
-    QList<Transaction> allData = tableReader.getAllData(database);
+    std::cout << "Collecting data." << std::endl;
+    QList<Transaction> allData = tableReader.getAllData();
+    std::cout << "Returned." << std::endl;
     // retrieve the data from the table reader
 }
 

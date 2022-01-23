@@ -44,7 +44,7 @@ class readTable
 {
 public:
     readTable();
-    QList<Transaction>  getAllData(QSqlDatabase);
+    QList<Transaction>  getAllData();
     QList<Transaction>  getData(QString, QString, strictType, QSqlDatabase);
     QList<Transaction>  getData(QString, QString, QString, strictType, QSqlDatabase);
     QList<Transaction>  executeQuery(QString);

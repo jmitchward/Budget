@@ -12,19 +12,21 @@ class viewStats : public QWidget
 {
     Q_OBJECT
 public:
-    viewStats(QWidget *parent);
+    viewStats(QWidget *parent = nullptr);
     inline void setDatabase(QSqlDatabase nDatabase) {
         database = nDatabase;
     }
-    void collectData();
     void getByMonthly();
     void getByCategory();
     void getByDate();
     void getByMember();
     void getByStore();
 
+    void initConnections();
+
 public slots:
     void displayTab();
+    void collectData();
 
 private:
     QSqlDatabase database;

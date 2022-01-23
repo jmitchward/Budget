@@ -39,16 +39,22 @@ public:
     Transaction();
     Transaction(QString, double, QString, QString, Category, bool, Member);
     Transaction(QString, double, QString, QString, QString, bool, QString);
-    void operator()(QString, double, QString, QString, Category, bool, Member);
     Transaction(const Transaction&);
+
+    inline void setDate (QString nD)    { date          = nD;   }
+    inline void setStore(QString nS)    { store         = nS;   }
+    inline void setDesc (QString nDsc)  { description   = nDsc; }
+    inline void setAmt  (double nAmt)   { amount        = nAmt; }
+    inline void setCtg  (Category ctg)  { category      = ctg;  }
+    inline void setMbr  (Member mbr)    { member        = mbr;  }
+    inline void setShr  (bool shr)      { shared        = shr;  }
+
 private:
-    transactionItem<QString>    date,
-                                store,
-                                description;
-    transactionItem<double>     amount;
-    transactionItem<Category>   category;
-    transactionItem<Member>     member;
-    transactionItem<bool>       shared;
+    QString     date, store, description;
+    double      amount;
+    Category    category;
+    Member      member;
+    bool        shared;
 };
 
 #endif // TRANSACTION_H

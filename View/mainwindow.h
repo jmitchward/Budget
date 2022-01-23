@@ -15,6 +15,12 @@
 #include <QFile>
 #include <QDir>
 #include "View/viewstats.h"
+#include "SQL/sqltablemodel.h"
+#include "SQL/readfile.h"
+#include "SQL/writetable.h"
+#include "SQL/readtable.h"
+#include <QSqlQuery>
+#include <QSqlError>
 
 
 QT_BEGIN_NAMESPACE
@@ -43,15 +49,28 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    void initDB(void);
+    void initMenu(void);
+    void initDefaultDB(void);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
+    // WIDGETS
     QStackedWidget *mainWidget;
+    QWidget *budgetViewWidget;
+    QWidget *gridWidget;
+    viewStats *statsTab;
+    // LAYOUTS
+    QGridLayout *gridLayout;;
     QHBoxLayout *mainLayout;
     QVBoxLayout *sideLayout;
+    // SQL
     QTableView *budgetView;
     QSqlDatabase budgetDB;
+    sqlTableModel *model;
+    readTable dataRetriever;
+    // DATA STORAGE
     QList<QList<QString>> compiledCSV;
     QFile *inputFile;
     QDir currentDir;   
