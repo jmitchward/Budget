@@ -10,21 +10,21 @@ class dataController
 public:
     dataController();
 
-    inline QList<QString>   getCategories()
-                        { return categories.getValues(); }
+    inline QList<Category>   getCategories()
+                        { return categories.getCategories(); }
     inline QList<Member>    getMembers()
-                        { return members.getValues(); }
-    inline bool checkCategory(QString category)
-                        { return categories.checkValues(category); }
+                        { return members.getMembers(); }
+    inline bool checkCategory(Category category)
+                        { return categories.checkCategory(category); }
     inline bool checkMember(Member member)
-                        { return members.checkValues(member);}
-    inline void addCategory(QString category)
-                        { categories.addValues(category);}
+                        { return members.checkMember(member);}
+    inline void addCategory(Category category)
+                        { categories.addCategory(category);}
     inline void addMember(Member member)
-                        { members.addValues(member); }
+                        { members.addMember(member); }
 
 private:
-    Category            categories;
+    Categories          categories;
     Members             members;
     QList<Transaction>  transactions;
 };

@@ -22,16 +22,6 @@ QList<Transaction> readTable::getAllData() {
                      << query.lastError().text().toStdString() << std::endl;}
 
     while (query.next()) {
-        std::cout << "Next query." << std::endl;
-        // Create a transaction based on the current line
-//        std::cout <<
-//
-//
-//
-//
-//
-//
-//                  << std::endl;
 
         Transaction *transaction = new Transaction();
         // Date
@@ -47,8 +37,11 @@ QList<Transaction> readTable::getAllData() {
         transaction->setStore(query.value(4).toString());
         std::cout << "Store set. "  << query.value(4).toString().toStdString() << std::endl;
         // Category
-        Category newCat(query.value(5).toString());
-        transaction->setCtg(newCat);;
+        std::cout << "Creating category." << std::endl;
+        Category newCategory;
+        newCategory.setTitle(query.value(5).toString());
+        std::cout << "New instance created. " << std::endl;
+        transaction->setCtg(newCategory);
         std::cout << "Cat set. "    << query.value(5).toString().toStdString() << std::endl;
         // Shared
         transaction->setShr(query.value(6).toBool());
@@ -91,23 +84,27 @@ QList<Transaction> readTable::getData(QString column, QString value, strictType 
                      << query.lastError().text().toStdString() << std::endl;}
 
     while (query.next()) {
+        Transaction transaction;
         // Create a transaction based on the current line
-        Transaction transaction(// Date
-                                query.value(1).toString(),
-                                // Amount
-                                query.value(2).toDouble(),
-                                // Description
-                                query.value(3).toString(),
-                                // Store
-                                query.value(4).toString(),
-                                // Category
-                                Category(query.value(5).toString()),
-                                // Shared
-                                query.value(6).toBool(),
-                                // Member
-                                Member(query.value(7).toString())
-                                );
-        // Add it ito the returning list of transactions
+        // Date
+        transaction.setDate(query.value(1).toString());
+        // Amount
+        transaction.setAmt(query.value(2).toDouble());
+        // Description
+        transaction.setDesc(query.value(3).toString());
+        // Store
+        transaction.setStore(query.value(4).toString());
+        // Category
+        Category cat;
+        cat.setTitle(query.value(5).toString());
+        transaction.setCtg(cat);
+        // Shared
+        transaction.setShr(query.value(6).toBool());
+        // Member
+        Member mem;
+        mem.setFirstName(query.value(7).toString());
+        transaction.setMbr(mem);
+        // Add transaction to the list
         readTransactions.append(transaction);
     }
     return readTransactions;

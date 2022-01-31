@@ -4,66 +4,32 @@
 #include <QObject>
 #include <QSet>
 #include "DTO/member.h"
+#include "DTO/category.h"
 
-template <class T>
-class budgetItem : public QObject {
-public:
-    QList<T> getValues() {
-        return itemValues;
-    }
-    void addValues(T& value) {
-//        if (!itemValues.contains(value)) {
-            itemValues.append(value);
-//        }
-    }
-
-    bool checkValues(T& value) {
-        return itemValues.contains(value);
-    }
-
-    budgetItem operator=(const budgetItem& b) {
-        this->itemValue = b.itemValue;
-        this->itemValues = b.itemValues;
-    }
-
-    budgetItem() {
-        T defaultValue;
-        itemValue = defaultValue;
-    }
-
-    budgetItem(T nValue) {
-        this->itemValue = nValue;
-    }
-
-    budgetItem(const budgetItem &nItem) {
-        this->itemValue = nItem.itemValue;
-        this->itemValues = nItem.itemValues;
-    }
-
-    T           itemValue;
-    QList<T>    itemValues;
-};
-
-class Category : public budgetItem<QString> {
+class Categories : public QObject{
     Q_OBJECT
 public:
-    Category();
-    Category(QString category);
+    Categories();
+    bool addCategory(Category newCategory);
+    bool removeCategory(Category oldCategory);
+    bool checkCategory(Category cat);
+    inline QList<Category> getCategories() { return categories; }
+    inline void setCategories(QList<Category> newCategories) { categories = newCategories; }
 private:
-    void init();
-
+    QList<Category> categories;
 };
 
-class Members : public budgetItem<Member> {
+class Members : public QObject {
     Q_OBJECT
 public:
     Members();
-    Members(QString member);
-    QList<Member>   getMembers();
-    Member          getMember(QString firstName);
-    void            addMember(Member);
+    bool addMember(Member newMember);
+    bool removeMember(Member oldMember);
+    bool checkMember(Member mem);
+    inline QList<Member> getMembers() { return members; }
+    inline void setMembers(QList<Member> newMembers) { members = newMembers; }
 private:
-    void init();
+    QList<Member> members;
 };
 
 #endif // DATASTRUCTS_H

@@ -14,6 +14,7 @@ INCLUDEPATH += $$PWD
 #include($$INCLUDEPATH/DTO/DTO.pri)
 
 HEADERS += \
+    DTO/category.h \
     DTO/dataStructs.h \
     DTO/member.h \
     DTO/transaction.h \
@@ -29,6 +30,7 @@ HEADERS += \
 
 SOURCES += \
     App/main.cpp \
+    DTO/category.cpp \
     DTO/dataStructs.cpp \
     DTO/member.cpp \
     DTO/transaction.cpp \
