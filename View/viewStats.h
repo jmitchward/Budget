@@ -4,9 +4,16 @@
 #include <QObject>
 #include <QWidget>
 #include <QPushButton>
+#include <QLabel>
+#include <QHBoxLayout>
 #include <QBoxLayout>
-#include "SQL/readtable.h"
+#include "Model/dataController.h"
 #include "DTO/transaction.h"
+#include "ui_viewStats.h"
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class viewStats; }
+QT_END_NAMESPACE
 
 class viewStats : public QWidget
 {
@@ -31,9 +38,11 @@ public slots:
 private:
     QSqlDatabase database;
     QBoxLayout *layout;
-    readTable tableReader;
+    dataController  controller;
     QPushButton *aButton;
-
+    Ui::viewStats   *ui;
+    QMap<QString, double> categoryTotals;
+    QMap<QString, double> memberTotals;
 };
 
 #endif // VIEWSTATS_H

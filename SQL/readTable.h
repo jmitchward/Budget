@@ -47,11 +47,12 @@ public:
     QList<Transaction>  getAllData();
     QList<Transaction>  getData(QString, QString, strictType, QSqlDatabase);
     QList<Transaction>  getData(QString, QString, QString, strictType, QSqlDatabase);
-    QList<Transaction>  executeQuery(QString);
+    QList<Transaction>  executeQuery(QString);    
     QString             getDates(QString, int, selectType, QSqlDatabase);
     QString             getAmounts(QString, QString, selectType, countType, QSqlDatabase);
     QString             getOther(QString, QString, selectType, strictType, QSqlDatabase);
     QString             getOther(QString, QString, QString, selectType, strictType, QSqlDatabase);
+    QList<Category>     getCategories();
 
     QString datePrep(int);
     QString numLTPrep(int);
@@ -64,6 +65,8 @@ public:
     QString selectPrep(QString);
     QString groupPrep(QString);
 
+protected:
+    QList<Category>     categories;
 };
 
 #endif // READTABLE_H

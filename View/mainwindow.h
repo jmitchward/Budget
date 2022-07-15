@@ -14,11 +14,12 @@
 #include <QStandardItemModel>
 #include <QFile>
 #include <QDir>
-#include "View/viewstats.h"
-#include "SQL/sqltablemodel.h"
-#include "SQL/readfile.h"
-#include "SQL/writetable.h"
-#include "SQL/readtable.h"
+#include "View/viewStats.h"
+#include "View/addIncomeBox.h"
+#include "SQL/sqlTableModel.h"
+#include "SQL/readFile.h"
+#include "SQL/writeTable.h"
+#include "SQL/readTable.h"
 #include <QSqlQuery>
 #include <QSqlError>
 
@@ -61,6 +62,7 @@ private:
     QWidget *budgetViewWidget;
     QWidget *gridWidget;
     viewStats *statsTab;
+    addIncomeBox * incomeBox;
     // LAYOUTS
     QGridLayout *gridLayout;;
     QHBoxLayout *mainLayout;
@@ -69,7 +71,6 @@ private:
     QTableView *budgetView;
     QSqlDatabase budgetDB;
     sqlTableModel *model;
-    readTable dataRetriever;
     // DATA STORAGE
     QList<QList<QString>> compiledCSV;
     QFile *inputFile;

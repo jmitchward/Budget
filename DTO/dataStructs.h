@@ -10,9 +10,11 @@ class Categories : public QObject{
     Q_OBJECT
 public:
     Categories();
-    bool addCategory(Category newCategory);
-    bool removeCategory(Category oldCategory);
-    bool checkCategory(Category cat);
+    bool addCategory(Category);
+    bool removeCategory(Category);
+    bool checkCategory(Category);
+    bool contains(Category);
+    void append(Category);
     inline QList<Category> getCategories() { return categories; }
     inline void setCategories(QList<Category> newCategories) { categories = newCategories; }
 private:

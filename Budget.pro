@@ -10,22 +10,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 INCLUDEPATH += $$PWD
 
-#include($$INCLUDEPATH/SQL/SQL.pri)
-#include($$INCLUDEPATH/DTO/DTO.pri)
-
 HEADERS += \
     DTO/category.h \
     DTO/dataStructs.h \
     DTO/member.h \
     DTO/transaction.h \
-    Model/datacontroller.h \
-    SQL/readfile.h \
-    SQL/readtable.h \
-    SQL/sqltablemodel.h \
-    SQL/writefile.h \
-    SQL/writetable.h \
+    Model/dataController.h \
+    SQL/readFile.h \
+    SQL/readTable.h \
+    SQL/sqlTableModel.h \
+    SQL/writeFile.h \
+    SQL/writeTable.h \
+    View/addIncomeBox.h \
     View/mainwindow.h \
-    View/viewstats.h
+    View/viewStats.h
 
 
 SOURCES += \
@@ -34,14 +32,15 @@ SOURCES += \
     DTO/dataStructs.cpp \
     DTO/member.cpp \
     DTO/transaction.cpp \
-    Model/datacontroller.cpp \
-    SQL/readfile.cpp \
-    SQL/readtable.cpp \
-    SQL/sqltablemodel.cpp \
-    SQL/writefile.cpp \
-    SQL/writetable.cpp \
+    Model/dataController.cpp \
+    SQL/readFile.cpp \
+    SQL/readTable.cpp \
+    SQL/sqlTableModel.cpp \
+    SQL/writeFile.cpp \
+    SQL/writeTable.cpp \
+    View/addIncomeBox.cpp \
     View/mainwindow.cpp \
-    View/viewstats.cpp
+    View/viewStats.cpp
 
 RESOURCES += \
     Resources/july_transactions.csv \
@@ -53,7 +52,9 @@ RESOURCES += \
 
 
 FORMS += \
-    View/mainwindow.ui
+    View/mainwindow.ui \
+    View/viewStats.ui \
+    View/addIncomeBox.ui
 
 
 message(Budget.pro path $$INCLUDEPATH)

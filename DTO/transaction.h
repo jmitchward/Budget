@@ -20,6 +20,14 @@ public:
     inline void setMbr  (Member mbr)    { member        = mbr;  }
     inline void setShr  (bool shr)      { shared        = shr;  }
 
+    inline auto getDate () -> QString   { return date;          }
+    inline auto getStore() -> QString   { return store;         }
+    inline auto getDesc () -> QString   { return description;   }
+    inline auto getAmt  () -> double    { return amount;        }
+    inline auto getCtg  () -> Category  { return category;      }
+    inline auto getMbr  () -> Member    { return member;        }
+    inline auto getShr  () -> bool      { return shared;        }
+
 private:
     QString     date, store, description;
     double      amount;

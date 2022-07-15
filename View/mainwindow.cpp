@@ -1,14 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    initMenu();
     initDB();
+//    initDefaultDB();
 
     model = new sqlTableModel(budgetDB);
     ui->budgetView->setModel(model);
@@ -20,11 +19,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->mainPanelWidget->addWidget(statsTab);
     statsTab->setDatabase(budgetDB);
 
+    incomeBox = new addIncomeBox(this);
+
+    initMenu();
     ui->mainPanelWidget->setCurrentWidget(ui->budgetViewWidget);
 }
 
 void MainWindow::initMenu() {
-    connect(ui->viewStats, &QAbstractButton::clicked, this, [=] {ui->mainPanelWidget->setCurrentWidget(statsTab);});
+    connect(ui->viewStats, &QAbstractButton::clicked, this, [=] { ui->mainPanelWidget->setCurrentWidget(statsTab);});
+    connect(ui->viewExpenses, &QAbstractButton::clicked, this, [=] { ui->mainPanelWidget->setCurrentWidget(ui->budgetViewWidget);});
+    connect(ui->addIncome, &QAbstractButton::clicked, this, [=] { incomeBox->show();});
 }
 
 void MainWindow::initDB() {
@@ -34,8 +38,8 @@ void MainWindow::initDB() {
     budgetDB.setHostName("mitchell");
     budgetDB.setPassword("password");
     bool ok = budgetDB.open();
-    if (ok) {std::cout << "Databse open." << std::endl;}
-    else {std::cout << "Databse not open." << std::endl;}
+    if (ok) {std::cout << "initDB succeeded." << std::endl;}
+    else {std::cout << "initDB failed." << std::endl;}
 
     QSqlQuery query;
     if(query.exec("create table if not exists transactions("

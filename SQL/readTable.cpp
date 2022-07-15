@@ -1,24 +1,19 @@
-#include "readtable.h"
+#include "readTable.h"
 
-readTable::readTable()
-{
-
+readTable::readTable() {
+    std::cout << "readTable created." << std::endl;
 }
 
 QList<Transaction> readTable::getAllData() {
     QSqlQuery query;
     QList<Transaction> readTransactions;
 
-//    if (!database.open()) {
-//        std::cout << "Error. Database not open." << std::endl;
-//    }
-
     QString selectQuery("SELECT * FROM transactions ");
 
     query.prepare(selectQuery);
 
-    if (query.exec()) { std::cout << "Success." << std::endl; }
-    else { std::cout << "Error. Query failed." << std::endl
+    if (query.exec()) { std::cout << "getAllData() executed successfully." << std::endl; }
+    else { std::cout << "getAllData() failed." << std::endl
                      << query.lastError().text().toStdString() << std::endl;}
 
     while (query.next()) {
@@ -26,34 +21,34 @@ QList<Transaction> readTable::getAllData() {
         Transaction *transaction = new Transaction();
         // Date
         transaction->setDate(query.value(1).toString());
-        std::cout << "Date set. "  << query.value(1).toString().toStdString() << std::endl;
+//        std::cout << "Date set. "  << query.value(1).toString().toStdString() << std::endl;
         // Amount
         transaction->setAmt(query.value(2).toDouble());
-        std::cout << "Amount set. " << query.value(2).toDouble() << std::endl;
+//        std::cout << "Amount set. " << query.value(2).toDouble() << std::endl;
         // Description
         transaction->setDesc(query.value(3).toString());
-        std::cout << "Desc set. "   << query.value(3).toString().toStdString() << std::endl;
+//        std::cout << "Desc set. "   << query.value(3).toString().toStdString() << std::endl;
         // Store
         transaction->setStore(query.value(4).toString());
-        std::cout << "Store set. "  << query.value(4).toString().toStdString() << std::endl;
+//        std::cout << "Store set. "  << query.value(4).toString().toStdString() << std::endl;
         // Category
-        std::cout << "Creating category." << std::endl;
+//        std::cout << "Creating category." << std::endl;
         Category newCategory;
         newCategory.setTitle(query.value(5).toString());
-        std::cout << "New instance created. " << std::endl;
+//        std::cout << "New instance created. " << std::endl;
         transaction->setCtg(newCategory);
-        std::cout << "Cat set. "    << query.value(5).toString().toStdString() << std::endl;
+//        std::cout << "Cat set. "    << query.value(5).toString().toStdString() << std::endl;
         // Shared
         transaction->setShr(query.value(6).toBool());
-        std::cout << "Shared set. " << query.value(6).toBool() << std::endl;
+//        std::cout << "Shared set. " << query.value(6).toBool() << std::endl;
         // Member
         transaction->setMbr(Member(query.value(7).toString()));
-        std::cout << "Member set. "    << query.value(7).toString().toStdString() << std::endl;
+//        std::cout << "Member set. "    << query.value(7).toString().toStdString() << std::endl;
 
-        std::cout << "Attempting to add transaction." << std::endl;
+//        std::cout << "Attempting to add transaction." << std::endl;
         // Add it ito the returning list of transactions
         readTransactions.append(*transaction);
-        std::cout << "Transaction appended." << std::endl;
+//        std::cout << "Transaction appended." << std::endl;
     }
     return readTransactions;
 }
@@ -64,7 +59,7 @@ QList<Transaction> readTable::getData(QString column, QString value, strictType 
     QList<Transaction> readTransactions;
 
     if (!database.open()) {
-        std::cout << "Error. Database not open." << std::endl;
+        std::cout << "getData() database not open." << std::endl;
     }
 
     queryStr = selectPrep();
@@ -309,6 +304,10 @@ QString readTable::getOther(QString selectColumn, QString whereColumn, QString v
     query.prepare(queryStr);
     if(!query.exec()) { std::cout << "Query failed." << std::endl; }
     return query.value(0).toString();
+}
+
+QList<Category> readTable::getCategories() {
+    return categories;
 }
 
 QString readTable::datePrep(int month) {

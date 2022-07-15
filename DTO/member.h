@@ -9,6 +9,7 @@ public:
     Member();
     Member(QString nFirstName) { firstName = nFirstName; }
     bool operator==(const Member &rhs) const {return rhs.firstName + rhs.lastName == firstName + lastName;}
+    bool operator<(const Member &rhs) const { return rhs.firstName + rhs.lastName == firstName + lastName; }
     inline QString  getFullName() { return firstName + lastName; }
     inline QString  getFirstName() { return firstName; }
 

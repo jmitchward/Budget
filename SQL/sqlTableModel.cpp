@@ -1,4 +1,4 @@
-#include "sqltablemodel.h"
+#include "sqlTableModel.h"
 
 sqlTableModel::sqlTableModel(QSqlDatabase database) :
     QSqlTableModel(nullptr, database)

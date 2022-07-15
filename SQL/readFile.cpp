@@ -1,4 +1,4 @@
-#include "readfile.h"
+#include "readFile.h"
 
 readFile::readFile(QFile *inputFile) :
     currentFile(inputFile)

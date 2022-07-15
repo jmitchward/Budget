@@ -1,4 +1,4 @@
-#include "writefile.h"
+#include "writeFile.h"
 
 writeFile::writeFile()
 {

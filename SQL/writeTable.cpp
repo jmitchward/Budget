@@ -1,4 +1,4 @@
-#include "writetable.h"
+#include "writeTable.h"
 #include <QDebug>
 
 writeTable::writeTable(QList<QList<QString>> newData) :
