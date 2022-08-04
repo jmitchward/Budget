@@ -6,12 +6,14 @@
 #include <QDir>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <SQL/sqlTableModel.h>
 
 class writeTable
 {
 public:
     writeTable(QList<QList<QString>>);
     void writeData();
+    int writeModel(SqlTableModel&, int);
 private:
     QList<QList<QString>> data;
     QSqlDatabase budgetDB;

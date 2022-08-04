@@ -1,6 +1,6 @@
 #include "viewStats.h"
 
-viewStats::viewStats(QWidget* parent) : ui(new Ui::viewStats)
+viewStats::viewStats(QWidget* parent) : ui(new Ui::ViewStats)
 {
     ui->setupUi(this);
     layout = new QBoxLayout(QBoxLayout::TopToBottom, parent);
@@ -18,25 +18,25 @@ void viewStats::collectData() {
 
     foreach ( auto transaction, controller.getTransactions() ) {
         if ( categoryTotals.contains(transaction.getCtg().getTitle() ) ) {
-            std::cout << "Category found: " << transaction.getCtg().getTitle().toStdString() << std::endl;
+//            std::cout << "Category found: " << transaction.getCtg().getTitle().toStdString() << std::endl;
             categoryTotals[transaction.getCtg().getTitle()] += transaction.getAmt();
-            std::cout << "Category amount: " << categoryTotals[transaction.getCtg().getTitle()] << std::endl;
+//            std::cout << "Category amount: " << categoryTotals[transaction.getCtg().getTitle()] << std::endl;
         }
         else {
-            std::cout << "New Category: " << transaction.getCtg().getTitle().toStdString() << std::endl;
+//            std::cout << "New Category: " << transaction.getCtg().getTitle().toStdString() << std::endl;
             categoryTotals[transaction.getCtg().getTitle()] = transaction.getAmt();
-            std::cout << "Category amount: " << categoryTotals[transaction.getCtg().getTitle()] << std::endl;
+//            std::cout << "Category amount: " << categoryTotals[transaction.getCtg().getTitle()] << std::endl;
         }
 
         if ( memberTotals.contains(transaction.getMbr().getFirstName() ) ) {
-            std::cout << "Member found: " << transaction.getMbr().getFirstName().toStdString() << std::endl;
+//            std::cout << "Member found: " << transaction.getMbr().getFirstName().toStdString() << std::endl;
             memberTotals[transaction.getMbr().getFirstName()] += transaction.getAmt();
-            std::cout << "Member amount: " << memberTotals[transaction.getMbr().getFirstName()] << std::endl;
+//            std::cout << "Member amount: " << memberTotals[transaction.getMbr().getFirstName()] << std::endl;
         }
         else {
-            std::cout << "New Member: " << transaction.getMbr().getFirstName().toStdString() << std::endl;
+//            std::cout << "New Member: " << transaction.getMbr().getFirstName().toStdString() << std::endl;
             memberTotals[transaction.getMbr().getFirstName()] = transaction.getAmt();
-            std::cout << "Member amount: " << memberTotals[transaction.getMbr().getFirstName()] << std::endl;
+//            std::cout << "Member amount: " << memberTotals[transaction.getMbr().getFirstName()] << std::endl;
         }
     }
 

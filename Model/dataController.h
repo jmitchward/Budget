@@ -6,10 +6,10 @@
 #include "DTO/transaction.h"
 #include "SQL/readTable.h"
 
-class dataController
+class DataController
 {
 public:
-    dataController();
+    DataController();
 
     void                        collectData();
 
@@ -32,7 +32,7 @@ private:
     Categories          categories;
     Members             members;
     QList<Transaction>  transactions;
-    readTable           tableReader;
+    ReadTable           tableReader;
 };
 
 #endif // DATACONTROLLER_H

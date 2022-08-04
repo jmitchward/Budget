@@ -4,11 +4,13 @@
 #include <QObject>
 #include <QSqlTableModel>
 
-class sqlTableModel : public QSqlTableModel
+class SqlTableModel : public QSqlTableModel
 {
     Q_OBJECT
 public:
-    sqlTableModel(QSqlDatabase);
+    SqlTableModel(QSqlDatabase);
+    void populateModel(int, int, QString);
+    void populateModel(int, QList<QString>);
 };
 
 #endif // SQLTABLEMODEL_H

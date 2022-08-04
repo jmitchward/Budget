@@ -1,10 +1,10 @@
 #include "readTable.h"
 
-readTable::readTable() {
+ReadTable::ReadTable() {
     std::cout << "readTable created." << std::endl;
 }
 
-QList<Transaction> readTable::getAllData() {
+QList<Transaction> ReadTable::getAllData() {
     QSqlQuery query;
     QList<Transaction> readTransactions;
 
@@ -53,7 +53,7 @@ QList<Transaction> readTable::getAllData() {
     return readTransactions;
 }
 
-QList<Transaction> readTable::getData(QString column, QString value, strictType strict, QSqlDatabase database) {
+QList<Transaction> ReadTable::getData(QString column, QString value, strictType strict, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
     QList<Transaction> readTransactions;
@@ -105,7 +105,7 @@ QList<Transaction> readTable::getData(QString column, QString value, strictType 
     return readTransactions;
 }
 
-QList<Transaction> readTable::getData(QString selectColumn, QString whereColumn, QString value, strictType strict, QSqlDatabase database) {
+QList<Transaction> ReadTable::getData(QString selectColumn, QString whereColumn, QString value, strictType strict, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
     QList<Transaction> readTransactions;
@@ -153,7 +153,7 @@ QList<Transaction> readTable::getData(QString selectColumn, QString whereColumn,
     return readTransactions;
 }
 
-QList<Transaction> readTable::executeQuery(QString setQuery) {
+QList<Transaction> ReadTable::executeQuery(QString setQuery) {
     QSqlQuery query;
     QList<Transaction> readTransactions;
 
@@ -187,7 +187,7 @@ QList<Transaction> readTable::executeQuery(QString setQuery) {
 }
 
 
-QString readTable::getDates(QString column, int value, selectType select, QSqlDatabase database) {
+QString ReadTable::getDates(QString column, int value, selectType select, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
 
@@ -211,7 +211,7 @@ QString readTable::getDates(QString column, int value, selectType select, QSqlDa
     return query.value(0).toString();
 }
 
-QString readTable::getAmounts(QString column, QString value, selectType select, countType count, QSqlDatabase database) {
+QString ReadTable::getAmounts(QString column, QString value, selectType select, countType count, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
 
@@ -248,7 +248,7 @@ QString readTable::getAmounts(QString column, QString value, selectType select, 
 }
 
 
-QString readTable::getOther(QString column, QString value, selectType select, strictType strict, QSqlDatabase database) {
+QString ReadTable::getOther(QString column, QString value, selectType select, strictType strict, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
 
@@ -277,7 +277,7 @@ QString readTable::getOther(QString column, QString value, selectType select, st
     return query.value(0).toString();
 }
 
-QString readTable::getOther(QString selectColumn, QString whereColumn, QString value, selectType select, strictType strict, QSqlDatabase database) {
+QString ReadTable::getOther(QString selectColumn, QString whereColumn, QString value, selectType select, strictType strict, QSqlDatabase database) {
     QSqlQuery query;
     QString queryStr;
 
@@ -306,47 +306,54 @@ QString readTable::getOther(QString selectColumn, QString whereColumn, QString v
     return query.value(0).toString();
 }
 
-QList<Category> readTable::getCategories() {
+QList<QString> ReadTable::getCategories() {
+    QSqlQuery query;
+    QString queryStr = QString("SELECT DISTINCT Category FROM transactions");
+    query.prepare(queryStr);
+    if ( !query.exec()) { std::cout << "Query failed." << std::endl; }
+    while ( query.next() ) {
+        categories.append(query.value(0).toString());
+    }
     return categories;
 }
 
-QString readTable::datePrep(int month) {
+QString ReadTable::datePrep(int month) {
     return QString("WHERE date LIKE \"%1/%\"").arg(month);
 }
 
-QString readTable::numLTPrep(int number) {
+QString ReadTable::numLTPrep(int number) {
     return QString("WHERE amount < %1").arg(number);
 }
 
-QString readTable::numGTPrep(int number) {
+QString ReadTable::numGTPrep(int number) {
     return QString("WHERE amount > %1").arg(number);
 }
 
-QString readTable::strPrep(QString column, QString value) {
+QString ReadTable::strPrep(QString column, QString value) {
     return QString("WHERE %1 = \"%2\"").arg(column, value);
 }
 
-QString readTable::strLkPrep(QString column, QString value) {
+QString ReadTable::strLkPrep(QString column, QString value) {
     return QString("Where %1 LIKE \"%2\"").arg(column, value);
 }
 
-QString readTable::sumPrep() {
+QString ReadTable::sumPrep() {
     return QString ("SELECT SUM(amount) FROM transactions ");
 }
 
-QString readTable::countPrep(QString column) {
+QString ReadTable::countPrep(QString column) {
     return QString("SELECT COUNT(%1) FROM transactions ").arg(column);
 }
 
-QString readTable::selectPrep() {
+QString ReadTable::selectPrep() {
     return QString("SELECT * FROM transactions ");
 }
 
-QString readTable::selectPrep(QString column) {
+QString ReadTable::selectPrep(QString column) {
     return QString("SELECT %1 FROM transactions ").arg(column);
 }
 
-QString readTable::groupPrep(QString column) {
+QString ReadTable::groupPrep(QString column) {
     return QString("GROUP BY %1").arg(column);
 }
 

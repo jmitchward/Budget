@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <iostream>
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QHBoxLayout>
@@ -10,19 +11,21 @@
 #include <QSqlTableModel>
 #include <QTableView>
 #include <QSqlDatabase>
-#include <iostream>
 #include <QStandardItemModel>
 #include <QFile>
 #include <QDir>
+#include <QSqlQuery>
+#include <QSqlError>
+
 #include "View/viewStats.h"
 #include "View/addIncomeBox.h"
+#include "View/addExpenseBox.h"
+#include "View/categoryEditBox.h"
+
 #include "SQL/sqlTableModel.h"
 #include "SQL/readFile.h"
 #include "SQL/writeTable.h"
 #include "SQL/readTable.h"
-#include <QSqlQuery>
-#include <QSqlError>
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -62,7 +65,9 @@ private:
     QWidget *budgetViewWidget;
     QWidget *gridWidget;
     viewStats *statsTab;
-    addIncomeBox * incomeBox;
+    AddIncomeBox * incomeBox;
+    AddExpenseBox * expenseBox;
+    CategoryEditBox* categoryEdit;
     // LAYOUTS
     QGridLayout *gridLayout;;
     QHBoxLayout *mainLayout;
@@ -70,7 +75,8 @@ private:
     // SQL
     QTableView *budgetView;
     QSqlDatabase budgetDB;
-    sqlTableModel *model;
+    SqlTableModel *model;
+    ReadTable   tableData;
     // DATA STORAGE
     QList<QList<QString>> compiledCSV;
     QFile *inputFile;

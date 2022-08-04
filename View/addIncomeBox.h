@@ -7,13 +7,13 @@ namespace Ui {
 class addIncomeBox;
 }
 
-class addIncomeBox : public QDialog
+class AddIncomeBox : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit addIncomeBox(QWidget *parent = nullptr);
-    ~addIncomeBox();
+    explicit AddIncomeBox(QWidget *parent = nullptr);
+    ~AddIncomeBox();
 
 private:
     Ui::addIncomeBox *ui;

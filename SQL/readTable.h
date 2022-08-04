@@ -40,10 +40,10 @@ enum strictType {
     LIKE
 };
 
-class readTable
+class ReadTable
 {
 public:
-    readTable();
+    ReadTable();
     QList<Transaction>  getAllData();
     QList<Transaction>  getData(QString, QString, strictType, QSqlDatabase);
     QList<Transaction>  getData(QString, QString, QString, strictType, QSqlDatabase);
@@ -52,7 +52,7 @@ public:
     QString             getAmounts(QString, QString, selectType, countType, QSqlDatabase);
     QString             getOther(QString, QString, selectType, strictType, QSqlDatabase);
     QString             getOther(QString, QString, QString, selectType, strictType, QSqlDatabase);
-    QList<Category>     getCategories();
+    QList<QString>      getCategories();
 
     QString datePrep(int);
     QString numLTPrep(int);
@@ -66,7 +66,7 @@ public:
     QString groupPrep(QString);
 
 protected:
-    QList<Category>     categories;
+    QList<QString>     categories;
 };
 
 #endif // READTABLE_H

@@ -1,7 +1,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql gui
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql gui core5compat
 
 CONFIG += c++11
 
@@ -21,7 +21,9 @@ HEADERS += \
     SQL/sqlTableModel.h \
     SQL/writeFile.h \
     SQL/writeTable.h \
+    View/addExpenseBox.h \
     View/addIncomeBox.h \
+    View/categoryEditBox.h \
     View/mainwindow.h \
     View/viewStats.h
 
@@ -38,7 +40,9 @@ SOURCES += \
     SQL/sqlTableModel.cpp \
     SQL/writeFile.cpp \
     SQL/writeTable.cpp \
+    View/addExpenseBox.cpp \
     View/addIncomeBox.cpp \
+    View/categoryEditBox.cpp \
     View/mainwindow.cpp \
     View/viewStats.cpp
 
@@ -52,9 +56,10 @@ RESOURCES += \
 
 
 FORMS += \
+    View/addExpenseBox.ui \
+    View/addIncomeBox.ui \
     View/mainwindow.ui \
-    View/viewStats.ui \
-    View/addIncomeBox.ui
+    View/viewStats.ui
 
 
 message(Budget.pro path $$INCLUDEPATH)

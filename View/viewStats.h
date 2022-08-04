@@ -12,7 +12,7 @@
 #include "ui_viewStats.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class viewStats; }
+namespace Ui { class ViewStats; }
 QT_END_NAMESPACE
 
 class viewStats : public QWidget
@@ -38,9 +38,9 @@ public slots:
 private:
     QSqlDatabase database;
     QBoxLayout *layout;
-    dataController  controller;
+    DataController  controller;
     QPushButton *aButton;
-    Ui::viewStats   *ui;
+    Ui::ViewStats   *ui;
     QMap<QString, double> categoryTotals;
     QMap<QString, double> memberTotals;
 };

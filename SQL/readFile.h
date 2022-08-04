@@ -7,6 +7,7 @@
 #include <QDir>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QRegExp>
 
 
 class readFile

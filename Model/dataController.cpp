@@ -1,9 +1,9 @@
 #include "dataController.h"
 
-dataController::dataController() {
+DataController::DataController() {
 }
 
-void dataController::collectData() {
+void DataController::collectData() {
     transactions = tableReader.getAllData();
     foreach( auto transaction, transactions) {
         if (!categories.checkCategory(transaction.getCtg())) {

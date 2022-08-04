@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>addIncomeBox</class>
- <widget class="QDialog" name="addIncomeBox">
+ <class>AddExpenseBox</class>
+ <widget class="QDialog" name="AddExpenseBox">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Budget -&gt; Income</string>
+   <string>Budget -&gt; Expense</string>
   </property>
   <property name="modal">
    <bool>true</bool>
@@ -32,27 +32,6 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLabel" name="addIncomeTitle">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>361</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>Add Income</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignCenter</set>
-   </property>
-  </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -63,26 +42,20 @@
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="categoryLabel">
+    <item row="5" column="1">
+     <widget class="QLabel" name="amountLabel">
       <property name="text">
-       <string>Category</string>
+       <string>Amount</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-      <property name="buddy">
-       <cstring>categoryBox</cstring>
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="dateLabel">
-      <property name="text">
-       <string>Date</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+    <item row="6" column="1">
+     <widget class="QDoubleSpinBox" name="amountBox">
+      <property name="decimals">
+       <number>2</number>
       </property>
      </widget>
     </item>
@@ -103,7 +76,26 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="3" column="0">
+     <widget class="QComboBox" name="storeBox"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QComboBox" name="memberBox"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="categoryLabel">
+      <property name="text">
+       <string>Category</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="buddy">
+       <cstring>categoryBox</cstring>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
      <widget class="QLabel" name="memberLabel">
       <property name="text">
        <string>Member</string>
@@ -116,27 +108,51 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
-     <widget class="QLabel" name="amountLabel">
+    <item row="0" column="1">
+     <widget class="QLabel" name="dateLabel">
       <property name="text">
-       <string>Amount</string>
+       <string>Date</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QComboBox" name="memberBox"/>
-    </item>
-    <item row="3" column="1">
-     <widget class="QDoubleSpinBox" name="amountBox">
-      <property name="decimals">
-       <number>2</number>
+    <item row="2" column="0">
+     <widget class="QLabel" name="storeLabel">
+      <property name="text">
+       <string>Store</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="buddy">
+       <cstring>categoryBox</cstring>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="addIncomeTitle">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>361</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Add Expense</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
   </widget>
  </widget>
  <resources/>
@@ -144,7 +160,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>addIncomeBox</receiver>
+   <receiver>AddExpenseBox</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -160,7 +176,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>addIncomeBox</receiver>
+   <receiver>AddExpenseBox</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
