@@ -11,40 +11,44 @@ CONFIG += c++11
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    DTO/category.h \
-    DTO/dataStructs.h \
-    DTO/member.h \
-    DTO/transaction.h \
-    Model/dataController.h \
-    SQL/readFile.h \
-    SQL/readTable.h \
-    SQL/sqlTableModel.h \
-    SQL/writeFile.h \
-    SQL/writeTable.h \
-    View/addExpenseBox.h \
-    View/addIncomeBox.h \
-    View/categoryEditBox.h \
-    View/mainwindow.h \
-    View/viewStats.h
+    DTO/Category.h \
+    DTO/DataStructs.h \
+    DTO/Member.h \
+    DTO/Store.h \
+    DTO/Transaction.h \
+    Model/DataController.h \
+    SQL/ReadFile.h \
+    SQL/ReadTable.h \
+    SQL/SQLTableModel.h \
+    SQL/WriteFile.h \
+    SQL/WriteTable.h \
+    View/AddExpenseBox.h \
+    View/AddIncomeBox.h \
+    View/CategoryEditBox.h \
+    View/MainWindow.h \
+    View/MemberEditBox.h \
+    View/ViewStats.h
 
 
 SOURCES += \
     App/main.cpp \
-    DTO/category.cpp \
-    DTO/dataStructs.cpp \
-    DTO/member.cpp \
-    DTO/transaction.cpp \
-    Model/dataController.cpp \
-    SQL/readFile.cpp \
-    SQL/readTable.cpp \
-    SQL/sqlTableModel.cpp \
-    SQL/writeFile.cpp \
-    SQL/writeTable.cpp \
-    View/addExpenseBox.cpp \
-    View/addIncomeBox.cpp \
-    View/categoryEditBox.cpp \
-    View/mainwindow.cpp \
-    View/viewStats.cpp
+    DTO/Category.cpp \
+    DTO/DataStructs.cpp \
+    DTO/Member.cpp \
+    DTO/Store.cpp \
+    DTO/Transaction.cpp \
+    Model/DataController.cpp \
+    SQL/ReadFile.cpp \
+    SQL/ReadTable.cpp \
+    SQL/SQLTableModel.cpp \
+    SQL/WriteFile.cpp \
+    SQL/WriteTable.cpp \
+    View/AddExpenseBox.cpp \
+    View/AddIncomeBox.cpp \
+    View/CategoryEditBox.cpp \
+    View/MainWindow.cpp \
+    View/MemberEditBox.cpp \
+    View/ViewStats.cpp
 
 RESOURCES += \
     Resources/july_transactions.csv \
@@ -56,10 +60,9 @@ RESOURCES += \
 
 
 FORMS += \
-    View/addExpenseBox.ui \
-    View/addIncomeBox.ui \
-    View/mainwindow.ui \
-    View/viewStats.ui
+    View/AddExpenseBox.ui \
+    View/AddIncomeBox.ui \
+    View/MainWindow.ui
 
 
 message(Budget.pro path $$INCLUDEPATH)
