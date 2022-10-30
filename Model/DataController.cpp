@@ -1,10 +1,10 @@
 #include "DataController.h"
 
 DataController::DataController(QWidget *parent) {
-
+    Q_UNUSED(parent);
     initDatabase();
     model = new SqlTableModel(database);
-//    initDefaultDatabase();
+    initDefaultDatabase();
     collectData();
 
 }
@@ -70,7 +70,7 @@ void DataController::initDefaultDatabase() {
        {
            fileReader.setFile(file);
            tableWriter.writeExpense(fileReader.readCSV());
-           expenseRow = tableWriter.writeModel(*model, expenseRow);
+           expenseRow = tableWriter.writeExpenseModel(*model, expenseRow);
        }
        else { std::cout << "File not open." << std::endl; }
        file->close();
@@ -79,19 +79,22 @@ void DataController::initDefaultDatabase() {
     inputFile = new QFile(":/Resources/july_transactions.csv");
     readInFile(inputFile);
     delete inputFile;
+
     inputFile = new QFile(":/Resources/august_transactions.csv");
     readInFile(inputFile);
     delete inputFile;
+
     inputFile = new QFile(":/Resources/september_transactions.csv");
     readInFile(inputFile);
     delete inputFile;
+
     inputFile = new QFile(":/Resources/october_transactions.csv");
     readInFile(inputFile);
     delete inputFile;
+
     inputFile = new QFile(":/Resources/november_transactions.csv");
     readInFile(inputFile);
     delete inputFile;
-
 }
 
 void DataController::addNewExpense(QList<QString> expense) {

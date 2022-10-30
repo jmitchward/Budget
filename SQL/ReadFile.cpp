@@ -20,6 +20,7 @@ QList<QList<QString>> ReadFile::readCSV() {
 //            int columnNumber = lineIterator - line.begin();
             lineIterator->replace("\"", "");
             lineIterator->replace("$", "");
+            lineIterator->replace(",", "");
             lineItem.append(*lineIterator);
         }
 
@@ -32,13 +33,14 @@ QList<QList<QString>> ReadFile::readCSV() {
 
 QStringList ReadFile::readLine() {
     QStringList values;
-    if (!currentFile->atEnd())
-    {
+    if ( !currentFile->atEnd() ) {
         QByteArray line = currentFile->readLine();
+        // The intent is to only generate strings in the list from CSV delimiters and allow commas otherwise
+        auto strList = QString(line).split( QRegularExpression("(\\\"\\,\\\")") );
         // Get the line, retrieved in ByteArray form
-        QList<QByteArray> valuesInBytes = line.split(',');
+//        QList<QByteArray> valuesInBytes = line.split(',');
         // Split the line by commas, since its a CSV
-        for (auto fileIterator = valuesInBytes.begin(); fileIterator < valuesInBytes.end(); fileIterator++) {
+        for (auto fileIterator = strList.begin(); fileIterator < strList.end(); fileIterator++) {
             if ( fileIterator->contains('\n') ) {
                    fileIterator->erase(std::remove(fileIterator->begin(), fileIterator->end(), '\n'), fileIterator->end());
             }

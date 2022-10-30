@@ -1,5 +1,5 @@
 #include "AddExpenseBox.h"
-#include "ui_addExpenseBox.h"
+#include "ui_AddExpenseBox.h"
 
 AddExpenseBox::AddExpenseBox(QWidget *parent) : QDialog(parent),  ui(new Ui::AddExpenseBox) {
     ui->setupUi(this);

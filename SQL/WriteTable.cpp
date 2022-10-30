@@ -8,14 +8,19 @@ WriteTable::WriteTable() {
 void WriteTable::writeExpense(QList<QList<QString>> data) {
 
     for (QList<QList<QString>>::const_iterator dataIterator = data.cbegin(); dataIterator < data.cend(); dataIterator++) {
+        if ( dataIterator->size() == 0 ) {
+            continue;
+        }
+        else {
 
-            if(dataIterator->at(0).toLower().contains("date")) { std::cout << "Index line skipped." << std::endl;
-                                                                continue; }
+            if ( dataIterator->at(0).toLower().contains("date")) { continue; }
+            if ( ( dataIterator->at(1).toDouble() < 0 ) ) { continue ;}
+
             QSqlQuery query;
             query.prepare(QString("INSERT INTO transactions(date, amount, store, description, category, shared, member) "
                           " VALUES (:date, :amount, :description, :store, :category, :shared, :member)"));
             query.bindValue(":date", dataIterator->at(0));
-            query.bindValue(":amount", dataIterator->at(1));
+            query.bindValue(":amount", QString::number(dataIterator->at(1).toDouble(), 'f', 4 ) );
             query.bindValue(":store" , "Null");
             query.bindValue(":description", dataIterator->at(2));
             query.bindValue(":category", dataIterator->at(3));
@@ -26,6 +31,7 @@ void WriteTable::writeExpense(QList<QList<QString>> data) {
                 std::cout << "Query not successful." << std::endl;
                 std::cout << query.lastError().text().toStdString() << std::endl;
             }
+        }
     }
 }
 
@@ -35,7 +41,7 @@ void WriteTable::writeExpense(QList<QString> data) {
     query.prepare(QString("INSERT INTO transactions(date, amount, store, description, category, shared, member) "
                   " VALUES (:date, :amount, :description, :store, :category, :shared, :member)"));
     query.bindValue(":date",        data.at(0));
-    query.bindValue(":amount",      data.at(1));
+    query.bindValue(":amount",      QString::number( data.at(1).toDouble(), 'f', 4 ) );
     query.bindValue(":store" ,      data.at(2));
     query.bindValue(":description", data.at(3));
     query.bindValue(":category",    data.at(4));
@@ -56,7 +62,7 @@ void WriteTable::writeIncome(QList<QList<QString>> data) {
                                                                 continue; }
             QSqlQuery query;
             query.prepare(QString("INSERT INTO transactions(date, amount, store, description, category, shared, member) "
-                          " VALUES (:date, :amount, :store, :description, :category, :shared, :member)"));
+                          " VALUES (:date, :amount, :type, :description, :category, :shared, :member)"));
             query.bindValue(":date",        dataIterator->at(0));
             query.bindValue(":amount",      dataIterator->at(1));
             query.bindValue(":type" ,       dataIterator->at(2));
@@ -89,7 +95,7 @@ void WriteTable::writeIncome(QList<QString> data) {
     }
 }
 
-int WriteTable::writeModel(SqlTableModel &model, int rowCount) {
+int WriteTable::writeExpenseModel(SqlTableModel &model, int rowCount) {
 
     for (QList<QList<QString>>::const_iterator dataIterator = data.cbegin(); dataIterator < data.cend(); dataIterator++) {
 
@@ -98,14 +104,22 @@ int WriteTable::writeModel(SqlTableModel &model, int rowCount) {
         if(dataIterator->at(0).toLower().contains("date")) { std::cout << "Index line skipped." << std::endl;
                                                             continue; }
 
+        // Date
         rowData.append(dataIterator->at(0));
-        rowData.append(dataIterator->at(1));
+        // Amount
+        rowData.append(QString::number( dataIterator->at(1).toDouble(), 'f', 4) );
+        // Store
         rowData.append(QString("NULL"));
+        // Description
         rowData.append(dataIterator->at(2));
+        // Category
         rowData.append(dataIterator->at(3));
+        // Shared
         rowData.append(dataIterator->at(4));
+        // Member
         rowData.append(dataIterator->at(5));
-        model.populateModel(rowCount, rowData);
+
+        model.populateExpenseModel(rowCount, rowData);
         rowCount++;
     }
 

@@ -16,7 +16,7 @@ public:
     void writeExpense(QList<QString>);
     void writeIncome(QList<QList<QString>>);
     void writeIncome(QList<QString>);
-    int writeModel(SqlTableModel&, int);
+    int writeExpenseModel(SqlTableModel&, int);
 private:
     QList<QList<QString>> data;
     QSqlDatabase budgetDB;

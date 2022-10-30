@@ -20,6 +20,7 @@
 #include "View/ViewStats.h"
 #include "View/AddIncomeBox.h"
 #include "View/AddExpenseBox.h"
+#include "View/AmountEditBox.h"
 #include "View/CategoryEditBox.h"
 #include "View/MemberEditBox.h"
 #include "Model/DataController.h"
@@ -46,6 +47,8 @@ private:
     ViewStats *statsTab;
     AddIncomeBox * incomeBox;
     AddExpenseBox * expenseBox;
+    // ITEM DELEGATES
+    AmountEditBox*  amountEdit;
     CategoryEditBox* categoryEdit;
     MemberEditBox*  memberEdit;
     // LAYOUTS

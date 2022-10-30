@@ -1,5 +1,5 @@
 #include "MainWindow.h"
-#include "ui_mainwindow.h"
+#include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 
@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 
     ui->mainPanelWidget->setCurrentWidget(ui->budgetViewWidget);
+
+    amountEdit = new AmountEditBox(this);
+    ui->budgetView->setItemDelegateForColumn(2, amountEdit);
 
     categoryEdit = new CategoryEditBox(this);
     categoryEdit->setData(dataController->getCategoriesStr());

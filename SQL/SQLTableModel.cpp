@@ -17,7 +17,7 @@ void SqlTableModel::populateModel(int row, int column, QString data) {
     this->setData(modelIndex, static_cast<QVariant>(data));
 }
 
-void SqlTableModel::populateModel(int row, QList<QString> data) {
+void SqlTableModel::populateExpenseModel(int row, QList<QString> data) {
     for (auto i = 0; i < 7; i++) {
         qDebug() << "POPULATE MODEL | ROW |" << row <<"| COLUMN |" << i;
         QModelIndex modelIndex = this->index(row, i, QModelIndex());

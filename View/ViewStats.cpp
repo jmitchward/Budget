@@ -2,6 +2,7 @@
 #include <QTableWidget>
 
 ViewStats::ViewStats(QWidget* parent)  {
+    Q_UNUSED(parent);
 }
 
 void ViewStats::setData(QList<Transaction> tr) {
@@ -43,7 +44,7 @@ void ViewStats::parseData() {
     QGridLayout* viewStatsLayout = new QGridLayout(this);
 
 
-    QTableWidget* tableA = new QTableWidget(this);
+    QTableWidget* tableA = new QTableWidget();
     QString firstColumn = "Category";
     QString secondColumn = "Total";
     QStringList columnHeaders;
@@ -56,7 +57,7 @@ void ViewStats::parseData() {
     tableA->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
     viewStatsLayout->addWidget(tableA);
 
-    QTableWidget* tableB = new QTableWidget(this);
+    QTableWidget* tableB = new QTableWidget();
     firstColumn = "Member";
 
     columnHeaders.replace(0, firstColumn);
@@ -66,7 +67,7 @@ void ViewStats::parseData() {
     tableB->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
     viewStatsLayout->addWidget(tableB);
 
-    QTableWidget* tableC = new QTableWidget(this);
+    QTableWidget* tableC = new QTableWidget();
     firstColumn = "Store";
 
     columnHeaders.replace(0, firstColumn);

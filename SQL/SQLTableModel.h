@@ -10,7 +10,7 @@ class SqlTableModel : public QSqlTableModel
 public:
     SqlTableModel(QSqlDatabase);
     void populateModel(int, int, QString);
-    void populateModel(int, QList<QString>);
+    void populateExpenseModel(int, QList<QString>);
     void selectTransactions();
     void selectEarnings();
 };
