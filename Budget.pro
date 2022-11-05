@@ -1,5 +1,5 @@
 
-QT       += core gui
+QT       += core gui core5compat
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql gui core5compat
 
@@ -22,12 +22,13 @@ HEADERS += \
     SQL/SQLTableModel.h \
     SQL/WriteFile.h \
     SQL/WriteTable.h \
-    View/AddExpenseBox.h \
-    View/AddIncomeBox.h \
-    View/CategoryEditBox.h \
+    View/Dialogs/AddExpenseBox.h \
+    View/Dialogs/AddIncomeBox.h \
     View/MainWindow.h \
-    View/MemberEditBox.h \
-    View/ViewStats.h
+    View/ViewStats.h \
+    View/Delegates/CategoryEditBox.h \
+    View/Delegates/MemberEditBox.h \
+    View/Delegates/AmountEditBox.h
 
 
 SOURCES += \
@@ -43,12 +44,13 @@ SOURCES += \
     SQL/SQLTableModel.cpp \
     SQL/WriteFile.cpp \
     SQL/WriteTable.cpp \
-    View/AddExpenseBox.cpp \
-    View/AddIncomeBox.cpp \
-    View/CategoryEditBox.cpp \
+    View/Dialogs/AddExpenseBox.cpp \
+    View/Dialogs/AddIncomeBox.cpp \
     View/MainWindow.cpp \
-    View/MemberEditBox.cpp \
-    View/ViewStats.cpp
+    View/ViewStats.cpp \
+    View/Delegates/CategoryEditBox.cpp \
+    View/Delegates/MemberEditBox.cpp \
+    View/Delegates/AmountEditBox.cpp
 
 RESOURCES += \
     Resources/july_transactions.csv \
@@ -60,8 +62,8 @@ RESOURCES += \
 
 
 FORMS += \
-    View/AddExpenseBox.ui \
-    View/AddIncomeBox.ui \
+    View/Dialogs/AddExpenseBox.ui \
+    View/Dialogs/AddIncomeBox.ui \
     View/MainWindow.ui
 
 

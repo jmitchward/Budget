@@ -3,6 +3,8 @@
 
 ViewStats::ViewStats(QWidget* parent)  {
     Q_UNUSED(parent);
+    layout = new QGridLayout();
+    setLayout(layout);
 }
 
 void ViewStats::setData(QList<Transaction> tr) {
@@ -41,9 +43,7 @@ void ViewStats::parseData() {
         }
     }
 
-    QGridLayout* viewStatsLayout = new QGridLayout(this);
-
-
+    amountEdit = new AmountEditBox();
     QTableWidget* tableA = new QTableWidget();
     QString firstColumn = "Category";
     QString secondColumn = "Total";
@@ -55,7 +55,7 @@ void ViewStats::parseData() {
     tableA->setRowCount(categoryTotals.size());
     tableA->setHorizontalHeaderLabels(columnHeaders);
     tableA->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    viewStatsLayout->addWidget(tableA);
+    layout->addWidget(tableA, 0, 0);
 
     QTableWidget* tableB = new QTableWidget();
     firstColumn = "Member";
@@ -65,7 +65,7 @@ void ViewStats::parseData() {
     tableB->setRowCount(memberTotals.size());
     tableB->setHorizontalHeaderLabels(columnHeaders);
     tableB->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    viewStatsLayout->addWidget(tableB);
+    layout->addWidget(tableB, 1, 0);
 
     QTableWidget* tableC = new QTableWidget();
     firstColumn = "Store";
@@ -75,7 +75,7 @@ void ViewStats::parseData() {
     tableC->setRowCount(storeTotals.size());
     tableC->setHorizontalHeaderLabels(columnHeaders);
     tableC->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-    viewStatsLayout->addWidget(tableC);
+    layout->addWidget(tableC, 2, 0);
 
     auto row = 0;
     for ( const auto &cat : categoryTotals.keys() ) {
@@ -86,6 +86,8 @@ void ViewStats::parseData() {
         row++;
     }
 
+    tableA->setItemDelegateForColumn(1, amountEdit);
+
     row = 0;
     for ( auto mbr : memberTotals.keys() ) {
         QTableWidgetItem* label = new QTableWidgetItem(mbr);
@@ -94,6 +96,7 @@ void ViewStats::parseData() {
         tableB->setItem(row, 1, amount);
         row++;
     }
+    tableB->setItemDelegateForColumn(1, amountEdit);
 
     row = 0;
     for ( auto store : storeTotals.keys() ) {
@@ -103,6 +106,7 @@ void ViewStats::parseData() {
         tableC->setItem(row, 1, amount);
         row++;
     }
+    tableC->setItemDelegateForColumn(1, amountEdit);
 }
 
 void ViewStats::getByMonthly() {

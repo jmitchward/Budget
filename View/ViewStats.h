@@ -8,6 +8,7 @@
 #include <QHBoxLayout>
 #include <QBoxLayout>
 #include "DTO/Transaction.h"
+#include "Delegates/AmountEditBox.h"
 
 class ViewStats : public QWidget {
     Q_OBJECT
@@ -30,9 +31,10 @@ public slots:
     }
 
 private:
-    QBoxLayout *layout;
+    QGridLayout* layout;
     QPushButton *aButton;
     QList<Transaction>  transactions;
+    AmountEditBox*       amountEdit;
     QMap<QString, double> categoryTotals;
     QMap<QString, double> memberTotals;
     QMap<QString, double> storeTotals;

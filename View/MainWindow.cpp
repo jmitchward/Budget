@@ -16,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     initMenu();
 
-
     ui->mainPanelWidget->setCurrentWidget(ui->budgetViewWidget);
 
     amountEdit = new AmountEditBox(this);

@@ -18,11 +18,11 @@
 #include <QSqlError>
 
 #include "View/ViewStats.h"
-#include "View/AddIncomeBox.h"
-#include "View/AddExpenseBox.h"
-#include "View/AmountEditBox.h"
-#include "View/CategoryEditBox.h"
-#include "View/MemberEditBox.h"
+#include "View/Dialogs/AddIncomeBox.h"
+#include "View/Dialogs/AddExpenseBox.h"
+#include "View/Delegates/AmountEditBox.h"
+#include "View/Delegates/CategoryEditBox.h"
+#include "View/Delegates/MemberEditBox.h"
 #include "Model/DataController.h"
 
 QT_BEGIN_NAMESPACE
